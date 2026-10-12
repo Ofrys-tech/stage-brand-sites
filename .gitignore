@@ -1,0 +1,8 @@
+.DS_Store
+*.har
+cookies.txt
+*-jar.txt
+.env
+.env.*
+node_modules/
+__pycache__/
