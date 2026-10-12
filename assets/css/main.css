@@ -624,6 +624,38 @@ footer[id] {
    color: var(--muted-3);
 }
 
+/* ============================ placeholder pages ============================ */
+/* Used by the not-yet-ported spectacle pages (kazan/, ufa/, ufa-2026/, partner/). */
+
+.placeholder {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 24px;
+   max-width: 760px;
+   padding: clamp(64px, 12vh, 140px) 0 clamp(80px, 14vh, 160px);
+}
+
+.placeholder__actions {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 16px;
+   margin-top: 8px;
+}
+
+.placeholder__contacts {
+   margin-top: 24px;
+   padding-top: 24px;
+   border-top: 1px solid var(--line-soft);
+   font-size: 18px;
+   color: var(--muted);
+}
+
+.placeholder__contacts a {
+   color: var(--accent);
+   font-weight: 700;
+}
+
 /* ============================ reveal ============================ */
 
 /* Hidden state is applied only when JS opts in (html.reveal-init), so the
