@@ -73,4 +73,12 @@ html { scroll-behavior: smooth; }
 	#rec867373852 .tn-elem[data-elem-id="1730352994556"] { margin-left: 170px; }
 }
 
+/* «Смотреть фото» joins the nav row right after «Актеры» */
+@media screen and (min-width: 960px) {
+	#rec867373852 .tn-elem[data-elem-id="1730353109947"] { margin-left: -190px; }
+}
+@media screen and (min-width: 1200px) {
+	#rec867373852 .tn-elem[data-elem-id="1730353109947"] { margin-left: -322px; }
+}
+
 /* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block are deleted from the markup by tools/port_tilda.py */

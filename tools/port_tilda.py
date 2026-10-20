@@ -40,11 +40,23 @@ DROP_SCRIPTS = [
 
 # Decorative 3600x420 stadium outlines that stick out of the viewport.
 # Removing the 1px border keeps the faint panel fill but removes the arc.
+# The two outlines that used to cross the partner block on the root page are gone
+# from that page entirely (see PARTNER_DECOR).
 STADIUM_IDS = {
-    "index.html": ["1730353296026", "1730353345862", "1773398078166000002"],
+    "index.html": ["1730353345862"],
     "ufa.html": ["1730353296026", "1730353345862"],
     "kazan.html": ["1730353296026", "1730353345862"],
     "partner.html": [],
+}
+
+# Decorative shapes that paint over the partner block on the root page: both are
+# 3600px stadium panels parked on the section boundary, and their rounded ends land
+# on content (measured at 1440px):
+#   1730353296026        880..4480 x 1770..1972 -> «Красный ключ» card 222x47, its
+#                        logo 210x31, the «Наши партнеры» heading 75x52
+#   1773398078166000002  -3263..337 x 1759..1961 -> first logo card 3x36
+PARTNER_DECOR = {
+    "index.html": ["1730353296026", "1773398078166000002"],
 }
 
 LINK_MAP = {
@@ -95,7 +107,8 @@ FOOTER_DROP = {
         "rec819137808",
         ["1730363799998", "1730363799994", "1730363799990", "1730363626329"],
     ),
-    "partner.html": None,
+    # the partner page only has the «Стать партнером» button and its 300x231 plaque
+    "partner.html": ("rec841045063", ["1730363799990", "1730363626329"]),
 }
 
 # Footer contacts: phone/email become real links, street addresses open a map.
@@ -118,6 +131,14 @@ IP_ATOM = "1730363734622"
 HOME_SHIFT = 170
 NAV_TARGETS_BY_ROLE = ("about", "partners", "actors")
 
+# /ufa/: «Смотреть фото» stood at the far right of the hero and left a 342px hole
+# after «Актеры». Pull it into the nav row with a 20px gap. Both elements switch to
+# the <=1199 breakpoint layout, so the measured gap is 342px from 1200px up and
+# 210px at 960..1199 — the pull is the gap minus the 20px target.
+NAV_PULL = {
+    "ufa": {"rec": "rec867373852", "elem": "1730353109947", "wide": -322, "narrow": -190},
+}
+
 HOME_BUTTON = (
     '<a class="lb-home" href="../" aria-label="На главную страницу">'
     '<span class="lb-home__arrow" aria-hidden="true">←</span>'
@@ -135,6 +156,12 @@ def strip_query(url):
     return url.split("?")[0]
 
 
+# The partner thank-you letter was replaced by a corrected 4K version: the word
+# «Уважаемый» became «Уважаемая» and the scan was re-rendered at 2704x3840.
+# Stored as WebP (0.6 MB instead of a 12 MB PNG), so the reference is renamed.
+RENAMES = {"full_certificate.png": "full_certificate.webp"}
+
+
 def image_local(url):
     """static.tildacdn.com/<hash>/<name> and thb/.../-/resize/20x/<name> -> one file."""
     clean = strip_query(url)
@@ -142,6 +169,7 @@ def image_local(url):
     if not m:
         return None
     digest, name = m.group(1), m.group(2)
+    name = RENAMES.get(name, name)
     return f"../{IMG_DIR}/{digest}/{name}"
 
 
@@ -440,6 +468,18 @@ def site_css(route, nav, hidden, footer_drop):
                 css.append(f'\t#{nav["rec"]} .tn-elem[data-elem-id="{eid}"] {{ margin-left: {HOME_SHIFT}px; }}')
         css.append("}")
         css.append("")
+    pull = NAV_PULL.get(route)
+    if pull:
+        css += [
+            "/* «Смотреть фото» joins the nav row right after «Актеры» */",
+            "@media screen and (min-width: 960px) {",
+            f'\t#{pull["rec"]} .tn-elem[data-elem-id="{pull["elem"]}"] {{ margin-left: {pull["narrow"]}px; }}',
+            "}",
+            "@media screen and (min-width: 1200px) {",
+            f'\t#{pull["rec"]} .tn-elem[data-elem-id="{pull["elem"]}"] {{ margin-left: {pull["wide"]}px; }}',
+            "}",
+            "",
+        ]
     css.append("/* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block"
                " are deleted from the markup by tools/port_tilda.py */")
     return "\n".join(css) + "\n"
@@ -525,6 +565,7 @@ def port(html, page, route):
     extra = EXTRA_HIDE.get(route)
     if extra:
         doomed += extra[1]
+    doomed += PARTNER_DECOR.get(page, [])
     for elem_id in doomed:
         html = remove_element(html, elem_id)
     html = strip_dead_css(html, doomed)
