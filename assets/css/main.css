@@ -531,14 +531,16 @@ footer[id] {
 /* ============================ footer ============================ */
 
 .site-footer {
+   --footer-grid-cols: 12;
    position: relative;
    overflow: hidden;
    background: var(--bg);
    padding: clamp(56px, 7vw, 96px) 0 40px;
 }
 
-/* Even 120×120 cell grid, anchored to the footer's top-left corner so no
-   half-cells appear at the top or left edge. */
+/* Full-width square cells: the cell side is a whole fraction of the viewport,
+   so no clipped column at the right. Anchored to the bottom edge, so the last
+   row is complete. */
 .site-footer::before {
    content: "";
    position: absolute;
@@ -546,7 +548,9 @@ footer[id] {
    background-image:
       linear-gradient(to right, rgba(55, 55, 55, 0.45) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(55, 55, 55, 0.45) 1px, transparent 1px);
-   background-size: 120px 120px;
+   background-size:
+      calc(100vw / var(--footer-grid-cols)) calc(100vw / var(--footer-grid-cols));
+   background-position: 0 100%;
    pointer-events: none;
 }
 
@@ -728,11 +732,19 @@ html.reveal-init .reveal.is-in {
       grid-template-columns: minmax(0, 1fr);
       gap: 28px;
    }
+
+   .site-footer {
+      --footer-grid-cols: 8;
+   }
 }
 
 @media (max-width: 560px) {
    body {
       font-size: 18px;
+   }
+
+   .site-footer {
+      --footer-grid-cols: 4;
    }
 
    .hero__title {
