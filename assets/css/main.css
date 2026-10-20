@@ -27,6 +27,7 @@
    --muted-3: #949494;
    --accent: #da3036;
    --accent-soft: #ec777b;
+   --success: #3fae5a;
    --container: 1200px;
    --gutter: 20px;
    --header-h: 88px;
@@ -434,6 +435,22 @@ footer[id] {
    line-height: 1;
    text-transform: uppercase;
    color: var(--accent);
+}
+
+.card__status {
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   padding: 8px 14px;
+   border-radius: var(--r-pill);
+   background: var(--success);
+   color: var(--bg-deep);
+   font-size: 13px;
+   font-weight: 700;
+   letter-spacing: 0.12em;
+   line-height: 1;
+   text-transform: uppercase;
+   white-space: nowrap;
 }
 
 .card__title {
