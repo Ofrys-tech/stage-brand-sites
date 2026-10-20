@@ -295,7 +295,7 @@ footer[id] {
    position: relative;
    overflow: hidden;
    background: var(--bg);
-   padding: clamp(56px, 8vw, 96px) 0 clamp(64px, 9vw, 120px);
+   padding: clamp(56px, 8vw, 96px) 0 clamp(32px, 3vw, 40px);
 }
 
 .hero__ring {
@@ -381,22 +381,16 @@ footer[id] {
    filter: grayscale(1) contrast(1.05);
 }
 
-.hero__badge {
-   position: absolute;
-   left: 0;
-   bottom: 8%;
-   width: clamp(110px, 16vw, 168px);
-}
-
-.hero__badge img {
-   width: 100%;
-   height: auto;
-}
-
 /* ============================ sections ============================ */
 
 .section {
    padding: clamp(64px, 9vw, 120px) 0;
+}
+
+/* The hero already ends with generous whitespace, so the first section
+   starts closer to it instead of doubling the padding. */
+.spectacles {
+   padding-top: clamp(40px, 4vw, 56px);
 }
 
 .section__head {
@@ -489,25 +483,7 @@ footer[id] {
 }
 
 .card .pills {
-   margin-bottom: 32px;
-}
-
-.card__cta {
-   margin-top: auto;
-   display: inline-flex;
-   align-items: center;
-   gap: 10px;
-   font-size: 18px;
-   font-weight: 600;
-   color: var(--accent);
-}
-
-.card__arrow {
-   transition: transform var(--speed) var(--ease);
-}
-
-.card:hover .card__arrow {
-   transform: translateX(6px);
+   margin-bottom: 0;
 }
 
 /* ============================ partner band ============================ */
@@ -561,14 +537,16 @@ footer[id] {
    padding: clamp(56px, 7vw, 96px) 0 40px;
 }
 
-.site-footer__grid {
+/* Even 120×120 cell grid, anchored to the footer's top-left corner so no
+   half-cells appear at the top or left edge. */
+.site-footer::before {
+   content: "";
    position: absolute;
-   top: 0;
-   right: -10%;
-   width: 1400px;
-   max-width: none;
-   height: auto;
-   opacity: 0.45;
+   inset: 0;
+   background-image:
+      linear-gradient(to right, rgba(55, 55, 55, 0.45) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(55, 55, 55, 0.45) 1px, transparent 1px);
+   background-size: 120px 120px;
    pointer-events: none;
 }
 
@@ -685,11 +663,6 @@ html.reveal-init .reveal.is-in {
 
    .hero__portrait {
       width: min(300px, 60%);
-   }
-
-   .hero__badge {
-      left: min(200px, 42%);
-      bottom: 0;
    }
 
    .cards {
