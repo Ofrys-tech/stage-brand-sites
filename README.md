@@ -49,6 +49,12 @@ inline, so the port is byte-faithful and only rewrites references:
 - native `loading="lazy"` below the first screen; popup images stay eager
 - the two 3600×420 stadium outlines in the hero (the arcs sticking out of the viewport) lose their
   1px border — the faint panel fill stays
+- **navigation** (`assets/tilda/site.css`, generated): spectacle-to-spectacle links are gone
+  ("Спектакль в Казани 2025", "Уфа 2024", "Уфа 2026" — 2 header items and 2 hero buttons per page),
+  a "← На главную" pill is added to the hero, and the in-page anchors are repaired:
+  "О спектакле" / "Партнеры" / "Актеры" and the "ПОДРОБНЕЕ" roundel now scroll to the right section
+  on every page (Tilda had copied the Kazan record ids into the other pages, so they did nothing;
+  on the old root page the roundel opened a photo popup instead of scrolling down)
 
 ```bash
 python3 tools/port_tilda.py plan     # asset manifests (tools/_images.txt, tools/_libs.txt)
@@ -124,7 +130,8 @@ Contacts (from `lyudi-brendy.ru`): `+7 993 342-12-73`, `Dir-ufa@mail.ru`,
   ship without an `<h1>`. Worth fixing while adding the remaining defects.
 - **`/13mart`, `/30mart`** ad stubs are not ported; links to them still point at the live domain.
   They should become real redirects to `/`.
-- **Dead anchor.** The partner page links "Партнеры" to `#rec819093951`, which does not exist on
-  that page (bug inherited from Tilda).
+- **Empty T456 header.** On these pages the Tilda header block is a 0×0 placeholder — every visible
+  nav item lives in the hero Zero Block. That is why the back pill is placed in the hero rather than
+  in the header markup.
 - **Images.** 27 MB of originals on `/ufa-2026/`; no WebP/responsive pipeline yet.
 - **TildaSans** is vendored from Tilda's CDN. Confirm the licence before publishing.
