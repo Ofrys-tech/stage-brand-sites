@@ -295,7 +295,7 @@ footer[id] {
    position: relative;
    overflow: hidden;
    background: var(--bg);
-   padding: clamp(56px, 8vw, 96px) 0 0;
+   padding: clamp(28px, 4vw, 48px) 0 0;
 }
 
 .hero__ring {
