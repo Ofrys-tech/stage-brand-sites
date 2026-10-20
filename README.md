@@ -41,7 +41,6 @@ assets/js/main.js              mobile menu, scroll reveal, year (no dependencies
 assets/fonts/TildaSans-VF.woff2
 assets/img/logo.svg            «ЛЮДИ БРЕНДЫ» wordmark (from the Tilda project)
 assets/img/accent-circle.svg   red roundel (#da3036)
-assets/img/grid.svg            thin #373737 grid ornament
 assets/img/ring.png            white ring ornament (hero)
 assets/img/portrait.png        monochrome portrait (hero)
 assets/img/og.png              1200×630 link preview

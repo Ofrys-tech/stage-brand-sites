@@ -30,6 +30,7 @@
    --container: 1200px;
    --gutter: 20px;
    --header-h: 88px;
+   --grid-cols: 12;
    --r-card: 20px;
    --r-pill: 50px;
    --speed: 0.2s;
@@ -295,7 +296,7 @@ footer[id] {
    position: relative;
    overflow: hidden;
    background: var(--bg);
-   padding: clamp(28px, 4vw, 48px) 0 0;
+   padding: clamp(14px, 2vw, 24px) 0 0;
 }
 
 .hero__ring {
@@ -496,18 +497,6 @@ footer[id] {
    border-bottom: 1px solid var(--line-soft);
 }
 
-.partner__grid {
-   position: absolute;
-   top: 0;
-   left: 50%;
-   transform: translateX(-50%);
-   width: 1989px;
-   max-width: none;
-   height: auto;
-   opacity: 0.5;
-   pointer-events: none;
-}
-
 .partner__inner {
    position: relative;
    display: grid;
@@ -531,16 +520,15 @@ footer[id] {
 /* ============================ footer ============================ */
 
 .site-footer {
-   --footer-grid-cols: 12;
    position: relative;
    overflow: hidden;
    background: var(--bg);
    padding: clamp(56px, 7vw, 96px) 0 40px;
 }
 
-/* Full-width square cells: the cell side is a whole fraction of the viewport,
-   so no clipped column at the right. Anchored to the bottom edge, so the last
-   row is complete. */
+/* Shared page grid: full-width square cells with aligned columns in the
+   partner band and footer. Bottom-anchored, so the last visible row is whole. */
+.partner::before,
 .site-footer::before {
    content: "";
    position: absolute;
@@ -549,7 +537,7 @@ footer[id] {
       linear-gradient(to right, rgba(55, 55, 55, 0.45) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(55, 55, 55, 0.45) 1px, transparent 1px);
    background-size:
-      calc(100vw / var(--footer-grid-cols)) calc(100vw / var(--footer-grid-cols));
+      calc(100vw / var(--grid-cols)) calc(100vw / var(--grid-cols));
    background-position: 0 100%;
    pointer-events: none;
 }
@@ -685,6 +673,7 @@ html.reveal-init .reveal.is-in {
 @media (max-width: 960px) {
    :root {
       --header-h: 72px;
+      --grid-cols: 8;
    }
 
    .logo img {
@@ -730,19 +719,15 @@ html.reveal-init .reveal.is-in {
       grid-template-columns: minmax(0, 1fr);
       gap: 28px;
    }
-
-   .site-footer {
-      --footer-grid-cols: 8;
-   }
 }
 
 @media (max-width: 560px) {
-   body {
-      font-size: 18px;
+   :root {
+      --grid-cols: 4;
    }
 
-   .site-footer {
-      --footer-grid-cols: 4;
+   body {
+      font-size: 18px;
    }
 
    .hero__title {
