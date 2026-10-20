@@ -89,6 +89,18 @@ ROUNDEL_FIX = {"index.html": {"1730353388260": "about"}}
 
 # Bottom plaque on the spectacle pages: date pill, time pill and the photo button.
 # Same element ids on all three pages, different footer records.
+# Partner hero: the two 3600px stadium rails read as long lines running off-screen.
+# Clip them to their rounded ends so they become two big arcs wrapping the statue.
+PARTNER_HERO_CLIP = {
+    "partner": (
+        "rec841045059",
+        {
+            "1730353296026": "inset(0 0 0 calc(100% - 210px))",
+            "1730353345862": "inset(0 calc(100% - 210px) 0 0)",
+        },
+    )
+}
+
 # Kazan hero: date/time/ticket buttons at the top right.
 EXTRA_HIDE = {
     "kazan": ("rec819063241", ["1739783125890", "1739783086566", "1730353109947"]),
@@ -159,7 +171,10 @@ def strip_query(url):
 # The partner thank-you letter was replaced by a corrected 4K version: the word
 # «Уважаемый» became «Уважаемая» and the scan was re-rendered at 2704x3840.
 # Stored as WebP (0.6 MB instead of a 12 MB PNG), so the reference is renamed.
-RENAMES = {"full_certificate.png": "full_certificate.webp"}
+RENAMES = {
+    "full_certificate.png": "full_certificate.webp",
+    "pr.png": "pr.webp",  # clickable preview of the same letter
+}
 
 
 def image_local(url):
@@ -480,6 +495,13 @@ def site_css(route, nav, hidden, footer_drop):
             "}",
             "",
         ]
+    clip = PARTNER_HERO_CLIP.get(route)
+    if clip:
+        rec, rules = clip
+        css.append("")
+        css.append("/* partner hero: only the rounded ends of the stadium rails, no long lines */")
+        for elem, clip_path in rules.items():
+            css.append(f'#{rec} .tn-elem[data-elem-id="{elem}"] .tn-atom {{ clip-path: {clip_path}; }}')
     css.append("/* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block"
                " are deleted from the markup by tools/port_tilda.py */")
     return "\n".join(css) + "\n"
