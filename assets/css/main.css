@@ -27,7 +27,6 @@
    --muted-3: #949494;
    --accent: #da3036;
    --accent-soft: #ec777b;
-   --success: #3fae5a;
    --container: 1200px;
    --gutter: 20px;
    --header-h: 88px;
@@ -128,8 +127,8 @@ footer[id] {
    color: var(--accent);
 }
 
-.eyebrow__short {
-   display: none;
+.hero .eyebrow {
+   white-space: nowrap;
 }
 
 .lead {
@@ -444,15 +443,17 @@ footer[id] {
 
 .card__status {
    position: absolute;
-   top: 22px;
-   right: -52px;
-   padding: 8px 56px;
-   background: var(--success);
-   color: var(--bg-deep);
+   top: 40px;
+   right: -40px;
+   width: 190px;
+   padding: 9px 0;
+   background: var(--accent);
+   color: #fff;
    font-size: 13px;
    font-weight: 700;
    letter-spacing: 0.12em;
    line-height: 1;
+   text-align: center;
    text-transform: uppercase;
    white-space: nowrap;
    transform: rotate(45deg);
@@ -775,18 +776,9 @@ html.reveal-init .reveal.is-in {
       z-index: 1;
    }
 
-   .eyebrow__full {
-      display: none;
-   }
-
-   .eyebrow__short {
-      display: inline;
-      white-space: nowrap;
-   }
-
    .hero .eyebrow {
-      font-size: clamp(14px, 4.6vw, 18px);
-      letter-spacing: 0.12em;
+      font-size: clamp(10px, 3.4vw, 16px);
+      letter-spacing: 0.05em;
    }
 
    body {
