@@ -55,8 +55,9 @@ inline, so the port is byte-faithful and only rewrites references:
   170px to make room), styled like the "Смотреть фото" button; the in-page anchors are repaired
   ("О спектакле" / "Партнеры" / "Актеры" and the roundel scroll smoothly to the right section —
   Tilda had copied the Kazan record ids into the other pages, so they did nothing, and on the old root
-  page the roundel opened a photo popup instead of scrolling); the bottom plaque (date, time and
-  "Смотреть фото") is removed from the three spectacle pages
+  page the roundel opened a photo popup instead of scrolling); the bottom plaque is removed entirely
+  from the three spectacle pages — the date pill, the time pill, the "Смотреть фото" button and the
+  empty card that framed them
 
 ```bash
 python3 tools/port_tilda.py plan     # asset manifests (tools/_images.txt, tools/_libs.txt)

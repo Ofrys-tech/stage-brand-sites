@@ -77,9 +77,18 @@ ROUNDEL_FIX = {"index.html": {"1730353388260": "about"}}
 # Bottom plaque on the spectacle pages: date pill, time pill and the photo button.
 # Same element ids on all three pages, different footer records.
 FOOTER_DROP = {
-    "index.html": ("rec1914306901", ["1730363799998", "1730363799994", "1730363799990"]),
-    "ufa.html": ("rec867373856", ["1730363799998", "1730363799994", "1730363799990"]),
-    "kazan.html": ("rec819137808", ["1730363799998", "1730363799994", "1730363799990"]),
+    "index.html": (
+        "rec1914306901",
+        ["1730363799998", "1730363799994", "1730363799990", "1730363626329"],
+    ),
+    "ufa.html": (
+        "rec867373856",
+        ["1730363799998", "1730363799994", "1730363799990", "1730363626329"],
+    ),
+    "kazan.html": (
+        "rec819137808",
+        ["1730363799998", "1730363799994", "1730363799990", "1730363626329"],
+    ),
     "partner.html": None,
 }
 
