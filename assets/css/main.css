@@ -295,7 +295,7 @@ footer[id] {
    position: relative;
    overflow: hidden;
    background: var(--bg);
-   padding: clamp(56px, 8vw, 96px) 0 clamp(32px, 3vw, 40px);
+   padding: clamp(56px, 8vw, 96px) 0 0;
 }
 
 .hero__ring {
@@ -387,10 +387,10 @@ footer[id] {
    padding: clamp(64px, 9vw, 120px) 0;
 }
 
-/* The hero already ends with generous whitespace, so the first section
-   starts closer to it instead of doubling the padding. */
+/* The hero ends flush with its content; keep only a small gap before the
+   first section header. */
 .spectacles {
-   padding-top: clamp(40px, 4vw, 56px);
+   padding-top: clamp(32px, 2.5vw, 40px);
 }
 
 .section__head {
