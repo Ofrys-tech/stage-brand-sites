@@ -394,6 +394,19 @@ footer[id] {
    padding-top: clamp(32px, 2.5vw, 40px);
 }
 
+/* Desktop: nudge the hero copy up so the gap under the header is halved.
+   The section padding is reduced by the same amount, keeping the distance
+   from the facts to «Афиша» unchanged. */
+@media (min-width: 1025px) {
+   .hero__content {
+      top: -25px;
+   }
+
+   .spectacles {
+      padding-top: calc(clamp(32px, 2.5vw, 40px) - 25px);
+   }
+}
+
 .section__head {
    max-width: 760px;
 }
