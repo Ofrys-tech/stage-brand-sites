@@ -424,6 +424,7 @@ footer[id] {
    background: var(--bg-card);
    border: 1px solid var(--line-soft);
    border-radius: var(--r-card);
+   overflow: hidden;
    transition: border-color var(--speed) var(--ease), background-color var(--speed) var(--ease), transform var(--speed) var(--ease);
 }
 
@@ -443,10 +444,9 @@ footer[id] {
 
 .card__status {
    position: absolute;
-   top: 20px;
-   right: 20px;
-   padding: 8px 14px;
-   border-radius: var(--r-pill);
+   top: 22px;
+   right: -52px;
+   padding: 8px 56px;
    background: var(--success);
    color: var(--bg-deep);
    font-size: 13px;
@@ -455,6 +455,8 @@ footer[id] {
    line-height: 1;
    text-transform: uppercase;
    white-space: nowrap;
+   transform: rotate(45deg);
+   transform-origin: center;
 }
 
 .card__title {
