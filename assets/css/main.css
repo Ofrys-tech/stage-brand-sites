@@ -182,31 +182,6 @@ footer[id] {
    color: #fff;
 }
 
-.pills {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 12px;
-}
-
-.pill {
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   min-height: 64px;
-   padding: 0 34px;
-   border: 1px solid var(--accent);
-   border-radius: var(--r-pill);
-   background: var(--bg-deep);
-   color: var(--accent);
-   font-size: 20px;
-   font-weight: 600;
-   line-height: 1;
-}
-
-.pill_narrow {
-   padding: 0 24px;
-}
-
 /* ============================ header ============================ */
 
 .site-header {
@@ -496,8 +471,9 @@ footer[id] {
    color: var(--muted-3);
 }
 
-.card .pills {
-   margin-bottom: 0;
+.card__cta {
+   margin-top: auto;
+   align-self: stretch;
 }
 
 /* ============================ partner band ============================ */
