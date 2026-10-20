@@ -58,6 +58,10 @@ inline, so the port is byte-faithful and only rewrites references:
   page the roundel opened a photo popup instead of scrolling); the bottom plaque is removed entirely
   from the three spectacle pages — the date pill, the time pill, the "Смотреть фото" button and the
   empty card that framed them
+- **contacts**: the phone opens `tel:`, the e-mail opens `mailto:`, the venue street opens Yandex Maps in
+  a new tab (on `/kazan/` the address in the hero is linked too), and the ИП line is tidied — no dot
+  before a comma, no dot after the postcode, while «г.» keeps its dot:
+  *ИП Злобина Инна Сергеевна, 450091, г. Уфа, Карла Маркса, 58*
 
 ```bash
 python3 tools/port_tilda.py plan     # asset manifests (tools/_images.txt, tools/_libs.txt)
