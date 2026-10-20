@@ -1,0 +1,8 @@
+/* Self-hosted TildaSans (variable, 250–1000) — replaces static.tildacdn.com/css/fonts-tildasans.css */
+@font-face {
+	font-family: "TildaSans";
+	src: url("../fonts/TildaSans-VF.woff2") format("woff2-variations");
+	font-style: normal;
+	font-weight: 250 1000;
+	font-display: swap;
+}

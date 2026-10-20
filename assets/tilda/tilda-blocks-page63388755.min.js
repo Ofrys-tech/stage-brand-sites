@@ -1,0 +1,2 @@
+window.isMobile=!1;if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){window.isMobile=!0}
+function t456_setListMagin(recid,imglogo){var rec=document.getElementById('rec'+recid);if(!rec||window.innerWidth<=980)return;var menu=rec.querySelector('.t456');var leftSide=menu?menu.querySelector('.t456__leftwrapper'):null;var list=menu?menu.querySelector('.t456__list'):null;var leftSideWidth=leftSide?leftSide.offsetWidth:0;if(list)list.style.marginRight=(imglogo?leftSideWidth:leftSideWidth+30)+'px'}
