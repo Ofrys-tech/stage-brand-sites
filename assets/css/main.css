@@ -777,8 +777,13 @@ html.reveal-init .reveal.is-in {
    }
 
    .hero .eyebrow {
-      font-size: clamp(10px, 3.4vw, 16px);
-      letter-spacing: 0.05em;
+      font-size: clamp(12px, 4.6vw, 18px);
+      letter-spacing: 0.1em;
+   }
+
+   .hero .eyebrow .eyebrow__line {
+      display: block;
+      white-space: nowrap;
    }
 
    body {
@@ -815,6 +820,12 @@ html.reveal-init .reveal.is-in {
    .contact__value,
    .contact__text {
       font-size: 20px;
+   }
+}
+
+@media (max-width: 360px) {
+   .hero__title {
+      font-size: 40px;
    }
 }
 
