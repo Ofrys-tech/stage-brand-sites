@@ -13,6 +13,7 @@ touches layout, except for the deliberate patches listed below.
     python3 tools/port_tilda.py build    # write <route>/index.html
 """
 
+import hashlib
 import os
 import re
 import sys
@@ -394,9 +395,13 @@ def add_home_button(html):
     return html[: m.end()] + HOME_BUTTON + html[m.end():]
 
 
+SITE_CSS_MARKER = "<!--site-css-->"
+
+
 def link_site_css(html, route):
-    tag = f'<link rel="stylesheet" href="../assets/tilda/site-{route}.css">\n'
-    return html.replace("</head>", tag + "</head>", 1)
+    """Placeholder: main() replaces it with the real tag once the CSS is generated,
+    including a content hash so browsers never keep a stale stylesheet."""
+    return html.replace("</head>", SITE_CSS_MARKER + "\n</head>", 1)
 
 
 def site_css(route, nav, hidden, footer_drop):
@@ -614,6 +619,9 @@ def main():
             css = site_css(route, nav, hidden, FOOTER_DROP.get(page))
             with open(os.path.join(ROOT, "assets", "tilda", f"site-{route}.css"), "w", encoding="utf-8") as fh:
                 fh.write(css)
+            digest = hashlib.sha1(css.encode("utf-8")).hexdigest()[:8]
+            tag = f'<link rel="stylesheet" href="../assets/tilda/site-{route}.css?v={digest}">\n'
+            out = out.replace(SITE_CSS_MARKER, tag)
             dst_dir = os.path.join(ROOT, route)
             os.makedirs(dst_dir, exist_ok=True)
             marker = (
