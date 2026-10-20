@@ -558,6 +558,10 @@ footer[id] {
    position: relative;
 }
 
+.site-footer__portrait {
+   display: none;
+}
+
 .site-footer__brand {
    margin-bottom: 48px;
 }
@@ -737,6 +741,38 @@ html.reveal-init .reveal.is-in {
 @media (max-width: 560px) {
    :root {
       --grid-cols: 4;
+   }
+
+   .hero__visual {
+      display: none;
+   }
+
+   .hero__inner {
+      min-height: 0;
+   }
+
+   .site-footer__portrait {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(170px, 38vw);
+      pointer-events: none;
+      z-index: 0;
+   }
+
+   .site-footer__portrait img {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: grayscale(1) contrast(1.05);
+   }
+
+   .site-footer__brand,
+   .site-footer__cols,
+   .site-footer__copy {
+      position: relative;
+      z-index: 1;
    }
 
    .eyebrow__full {
