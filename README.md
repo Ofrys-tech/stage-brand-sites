@@ -49,12 +49,14 @@ inline, so the port is byte-faithful and only rewrites references:
 - native `loading="lazy"` below the first screen; popup images stay eager
 - the two 3600×420 stadium outlines in the hero (the arcs sticking out of the viewport) lose their
   1px border — the faint panel fill stays
-- **navigation** (`assets/tilda/site.css`, generated): spectacle-to-spectacle links are gone
-  ("Спектакль в Казани 2025", "Уфа 2024", "Уфа 2026" — 2 header items and 2 hero buttons per page),
-  a "← На главную" pill is added to the hero, and the in-page anchors are repaired:
-  "О спектакле" / "Партнеры" / "Актеры" and the "ПОДРОБНЕЕ" roundel now scroll to the right section
-  on every page (Tilda had copied the Kazan record ids into the other pages, so they did nothing;
-  on the old root page the roundel opened a photo popup instead of scrolling down)
+- **navigation** (`assets/tilda/site-<route>.css`, generated per page): spectacle-to-spectacle links
+  are gone ("Спектакль в Казани 2025", "Уфа 2024", "Уфа 2026" — 2 header items and 2 hero buttons per
+  page); a red "← На главную" pill sits left of "О спектакле" (the nav buttons are shifted right by
+  170px to make room), styled like the "Смотреть фото" button; the in-page anchors are repaired
+  ("О спектакле" / "Партнеры" / "Актеры" and the roundel scroll smoothly to the right section —
+  Tilda had copied the Kazan record ids into the other pages, so they did nothing, and on the old root
+  page the roundel opened a photo popup instead of scrolling); the bottom plaque (date, time and
+  "Смотреть фото") is removed from the three spectacle pages
 
 ```bash
 python3 tools/port_tilda.py plan     # asset manifests (tools/_images.txt, tools/_libs.txt)
