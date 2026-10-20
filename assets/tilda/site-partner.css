@@ -72,4 +72,4 @@ html { scroll-behavior: smooth; }
 	#rec841045059 .tn-elem[data-elem-id="1730352981570"] { margin-left: 170px; }
 }
 
-/* hidden: spectacle-to-spectacle buttons (the hub owns navigation) */
+/* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block are deleted from the markup by tools/port_tilda.py */

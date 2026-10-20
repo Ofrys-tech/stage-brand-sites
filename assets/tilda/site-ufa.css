@@ -73,12 +73,4 @@ html { scroll-behavior: smooth; }
 	#rec867373852 .tn-elem[data-elem-id="1730352994556"] { margin-left: 170px; }
 }
 
-/* hidden: spectacle-to-spectacle buttons (the hub owns navigation) */
-#rec867373852 .tn-elem[data-elem-id="1734361529540"] { display: none !important; }
-#rec867373852 .tn-elem[data-elem-id="1771440779795000001"] { display: none !important; }
-
-/* hidden: bottom date/time plaque and photo button */
-#rec867373856 .tn-elem[data-elem-id="1730363799998"] { display: none !important; }
-#rec867373856 .tn-elem[data-elem-id="1730363799994"] { display: none !important; }
-#rec867373856 .tn-elem[data-elem-id="1730363799990"] { display: none !important; }
-#rec867373856 .tn-elem[data-elem-id="1730363626329"] { display: none !important; }
+/* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block are deleted from the markup by tools/port_tilda.py */

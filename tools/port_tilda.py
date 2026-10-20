@@ -77,6 +77,11 @@ ROUNDEL_FIX = {"index.html": {"1730353388260": "about"}}
 
 # Bottom plaque on the spectacle pages: date pill, time pill and the photo button.
 # Same element ids on all three pages, different footer records.
+# Kazan hero: date/time/ticket buttons at the top right.
+EXTRA_HIDE = {
+    "kazan": ("rec819063241", ["1739783125890", "1739783086566", "1730353109947"]),
+}
+
 FOOTER_DROP = {
     "index.html": (
         "rec1914306901",
@@ -210,6 +215,36 @@ def remap_anchors(html, page):
     return html
 
 
+def remove_element(html, elem_id):
+    """Delete a whole Zero Block element (its <div class='t396__elem …'> subtree)."""
+    pos = html.find("data-elem-id='%s'" % elem_id)
+    if pos < 0:
+        return html
+    start = html.rfind("<div class='t396__elem", 0, pos)
+    if start < 0:
+        return html
+    depth = 0
+    for m in re.finditer(r"<div\b|</div>", html[start:]):
+        if m.group(0) == "</div>":
+            depth -= 1
+            if depth == 0:
+                return html[:start] + html[start + m.end():]
+        else:
+            depth += 1
+    return html
+
+
+def strip_dead_css(html, ids):
+    """Remove the generated CSS rules of deleted elements (they keep the payload small)."""
+    for elem_id in ids:
+        html = re.sub(
+            r'#rec\d+ \.tn-elem\[data-elem-id="%s"\][^{}]*\{[^{}]*\}\s*' % re.escape(elem_id),
+            "",
+            html,
+        )
+    return html
+
+
 def strip_cross_links(html):
     """Delete cross-spectacle menu items and collect the Zero Block buttons to hide."""
     for route in CROSS_ROUTES:
@@ -224,12 +259,15 @@ def strip_cross_links(html):
     pattern = re.compile(
         r"""<a class='tn-atom' href="(?:%s)\"""" % "|".join(re.escape(r) for r in CROSS_ROUTES)
     )
-    for m in pattern.finditer(html):
-        prefix = html[: m.start()]
-        rec = re.findall(r'<div id="(rec\d+)"', prefix)
-        elem = re.findall(r"data-elem-id='(\d+)'", prefix)
-        if rec and elem:
-            hidden.add((rec[-1], elem[-1]))
+    while True:
+        m = pattern.search(html)
+        if not m:
+            break
+        elem = re.findall(r"data-elem-id='(\d+)'", html[: m.start()])
+        if not elem:
+            break
+        hidden.add(elem[-1])
+        html = remove_element(html, elem[-1])
     return html, hidden
 
 
@@ -402,15 +440,8 @@ def site_css(route, nav, hidden, footer_drop):
                 css.append(f'\t#{nav["rec"]} .tn-elem[data-elem-id="{eid}"] {{ margin-left: {HOME_SHIFT}px; }}')
         css.append("}")
         css.append("")
-    css.append("/* hidden: spectacle-to-spectacle buttons (the hub owns navigation) */")
-    for rec, elem in sorted(hidden):
-        css.append(f'#{rec} .tn-elem[data-elem-id="{elem}"] {{ display: none !important; }}')
-    if footer_drop:
-        rec, ids = footer_drop
-        css.append("")
-        css.append("/* hidden: bottom date/time plaque and photo button */")
-        for elem in ids:
-            css.append(f'#{rec} .tn-elem[data-elem-id="{elem}"] {{ display: none !important; }}')
+    css.append("/* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block"
+               " are deleted from the markup by tools/port_tilda.py */")
     return "\n".join(css) + "\n"
 
 
@@ -485,6 +516,18 @@ def port(html, page, route):
         return not (m and m.group(1) in popup_records)
 
     html = "".join(lazy_segment(seg, segment_allows(seg)) for seg in segments)
+
+    # 8b. delete (not just hide) the blocks we do not want, plus their dead CSS
+    doomed = list(hidden)
+    footer = FOOTER_DROP.get(page)
+    if footer:
+        doomed += footer[1]
+    extra = EXTRA_HIDE.get(route)
+    if extra:
+        doomed += extra[1]
+    for elem_id in doomed:
+        html = remove_element(html, elem_id)
+    html = strip_dead_css(html, doomed)
 
     # 9. housekeeping
     html = html.replace('<html lang="en"', '<html lang="ru"')
