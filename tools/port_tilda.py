@@ -90,6 +90,16 @@ ROUNDEL_FIX = {"index.html": {"1730353388260": "about"}}
 
 # Bottom plaque on the spectacle pages: date pill, time pill and the photo button.
 # Same element ids on all three pages, different footer records.
+# /ufa-2026/: «Смотреть фото» goes straight to report 2; the report chooser popup
+# (record rec2124454941, holding «Фотоотчёт 1» and «Фотоотчёт 2») is deleted.
+PHOTO_LINK = {
+    "index.html": (
+        "1730353109947",
+        "https://sheshegov.com/disk/30-03-2026-blagotvoritelnyy-spektakl-lyudi-i-brendy-7qctt7",
+    )
+}
+DROP_RECORDS = {"index.html": ["rec2124454941"]}
+
 # Partner hero: the two 3600px stadium rails read as long lines running off-screen.
 # Clip them to their rounded ends so they become two big arcs wrapping the statue.
 PARTNER_HERO_CLIP = {
@@ -276,6 +286,36 @@ def remove_element(html, elem_id):
         else:
             depth += 1
     return html
+
+
+def remove_record(html, rec_id):
+    """Delete a whole Tilda block: <div id="recN" class="r t-rec" …> … </div>."""
+    start = html.find('<div id="%s" class="r t-rec"' % rec_id)
+    if start < 0:
+        return html
+    depth = 0
+    for m in re.finditer(r"<div\b|</div>", html[start:]):
+        if m.group(0) == "</div>":
+            depth -= 1
+            if depth == 0:
+                return html[:start] + html[start + m.end():]
+        else:
+            depth += 1
+    return html
+
+
+def repoint_button(html, elem_id, url):
+    """Point a Zero Block button element at an external URL instead of a popup."""
+    pos = html.find("data-elem-id='%s'" % elem_id)
+    if pos < 0:
+        return html
+    m = re.search(r"""<a class='tn-atom' href="[^"]*"([^>]*)>""", html[pos: pos + 3000])
+    if not m:
+        return html
+    absolute = pos + m.start()
+    tag = m.group(0)
+    new = re.sub(r'href="[^"]*"', 'href="%s" target="_blank" rel="noopener noreferrer"' % url, tag, count=1)
+    return html[:absolute] + new + html[absolute + len(tag):]
 
 
 def strip_dead_css(html, ids):
@@ -596,6 +636,13 @@ def port(html, page, route):
     for elem_id in doomed:
         html = remove_element(html, elem_id)
     html = strip_dead_css(html, doomed)
+
+    # 8c. photo reports: direct link + drop the chooser
+    photo = PHOTO_LINK.get(page)
+    if photo:
+        html = repoint_button(html, photo[0], photo[1])
+    for rec_id in DROP_RECORDS.get(page, []):
+        html = remove_record(html, rec_id)
 
     # 9. housekeeping
     html = html.replace('<html lang="en"', '<html lang="ru"')
