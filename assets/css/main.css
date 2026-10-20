@@ -128,6 +128,10 @@ footer[id] {
    color: var(--accent);
 }
 
+.eyebrow__short {
+   display: none;
+}
+
 .lead {
    font-size: clamp(21px, 1.55vw, 23px);
    font-weight: 300;
@@ -272,7 +276,7 @@ footer[id] {
    position: relative;
    overflow: hidden;
    background: var(--bg);
-   padding: 0;
+   padding: 20px 0 0;
 }
 
 .hero__ring {
@@ -650,6 +654,7 @@ html.reveal-init .reveal.is-in {
 @media (max-width: 1024px) {
    .hero__inner {
       grid-template-columns: minmax(0, 1fr);
+      gap: 68px;
    }
 
    .hero__visual {
@@ -730,6 +735,20 @@ html.reveal-init .reveal.is-in {
 @media (max-width: 560px) {
    :root {
       --grid-cols: 4;
+   }
+
+   .eyebrow__full {
+      display: none;
+   }
+
+   .eyebrow__short {
+      display: inline;
+      white-space: nowrap;
+   }
+
+   .hero .eyebrow {
+      font-size: clamp(14px, 4.6vw, 18px);
+      letter-spacing: 0.12em;
    }
 
    body {
