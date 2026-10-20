@@ -47,7 +47,7 @@ STADIUM_IDS = {
     "index.html": ["1730353345862"],
     "ufa.html": ["1730353296026", "1730353345862"],
     "kazan.html": ["1730353296026", "1730353345862"],
-    "partner.html": [],
+    "partner.html": ["1730353296026", "1730353345862"],
 }
 
 # Decorative shapes that paint over the partner block on the root page: both are
@@ -100,18 +100,6 @@ PHOTO_LINK = {
 }
 DROP_RECORDS = {"index.html": ["rec2124454941"]}
 
-# Partner hero: the two 3600px stadium rails read as long lines running off-screen.
-# Clip them to their rounded ends so they become two big arcs wrapping the statue.
-PARTNER_HERO_CLIP = {
-    "partner": (
-        "rec841045059",
-        {
-            "1730353296026": "inset(0 0 0 calc(100% - 210px))",
-            "1730353345862": "inset(0 calc(100% - 210px) 0 0)",
-        },
-    )
-}
-
 # Kazan hero: date/time/ticket buttons at the top right.
 EXTRA_HIDE = {
     "kazan": ("rec819063241", ["1739783125890", "1739783086566", "1730353109947"]),
@@ -160,6 +148,8 @@ NAV_TARGETS_BY_ROLE = ("about", "partners", "actors")
 # 210px at 960..1199 — the pull is the gap minus the 20px target.
 NAV_PULL = {
     "ufa": {"rec": "rec867373852", "elem": "1730353109947", "wide": -322, "narrow": -190},
+    # /partner/: «Стать партнером» 20px right of «Партнеры»
+    "partner": {"rec": "rec841045059", "elem": "1730353109947", "wide": -394, "narrow": -174},
 }
 
 HOME_BUTTON = (
@@ -540,13 +530,6 @@ def site_css(route, nav, hidden, footer_drop):
             "}",
             "",
         ]
-    clip = PARTNER_HERO_CLIP.get(route)
-    if clip:
-        rec, rules = clip
-        css.append("")
-        css.append("/* partner hero: only the rounded ends of the stadium rails, no long lines */")
-        for elem, clip_path in rules.items():
-            css.append(f'#{rec} .tn-elem[data-elem-id="{elem}"] .tn-atom {{ clip-path: {clip_path}; }}')
     css.append("/* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block"
                " are deleted from the markup by tools/port_tilda.py */")
     return "\n".join(css) + "\n"
