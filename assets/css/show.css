@@ -41,6 +41,25 @@
    margin-bottom: 24px;
 }
 
+.show-hero__art {
+   display: none;
+}
+
+@media (min-width: 1280px) {
+   .show-hero__art {
+      display: block;
+      position: absolute;
+      top: -30px;
+      right: -200px;
+      z-index: -1;
+      width: 700px;
+      aspect-ratio: 1;
+      background: url("../img/story/hero-toratau.webp") no-repeat right top / contain;
+      pointer-events: none;
+   }
+}
+
+
 .show-hero__title {
    margin: clamp(24px, 3vw, 40px) 0 0;
    line-height: 0;
