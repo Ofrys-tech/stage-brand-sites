@@ -4,17 +4,18 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Люди Бренды — документальный спектакль</title>
+	<title>Люди Бренды — благотворительные спектакли</title>
 	<meta name="description"
-		content="Иммерсивный документальный спектакль о реальных историях значимых людей наших городов, предпринимателей и руководителей о пути роста и развития.">
+		content="Проект, объединяющий предпринимателей, руководителей и лидеров нашего города на театральной сцене ради общей цели — помогать детям и воплощать их заветные мечты в жизнь.">
 	<meta property="og:type" content="website">
-	<meta property="og:title" content="Люди Бренды — документальный спектакль">
+	<meta property="og:title" content="Люди Бренды — благотворительные спектакли">
 	<meta property="og:description"
-		content="Иммерсивный документальный спектакль о реальных историях значимых людей наших городов, предпринимателей и руководителей о пути роста и развития.">
+		content="Проект, объединяющий предпринимателей, руководителей и лидеров нашего города на театральной сцене ради общей цели — помогать детям и воплощать их заветные мечты в жизнь.">
 	<meta property="og:image" content="assets/img/og.png">
 	<link rel="icon" href="assets/img/accent-circle.svg" type="image/svg+xml">
 	<link rel="preload" href="assets/fonts/TildaSans-VF.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="stylesheet" href="assets/css/main.css?v=20261020n">
+	<link rel="stylesheet" href="assets/css/main.css?v=20261023a">
+	<script>if (!window.matchMedia || !matchMedia('(prefers-reduced-motion: reduce)').matches) {document.documentElement.classList.add('motion');}</script>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 	<header class="site-header" id="top">
 		<div class="wrap site-header__inner">
 			<a class="logo" href="./" aria-label="Люди Бренды — на главную">
-				<img src="assets/img/logo.svg" alt="Люди Бренды" width="192" height="50">
+				<img src="assets/img/logo-lockup.svg" alt="Люди Бренды — театр добрых дел" width="285" height="126">
 			</a>
 
 			<nav class="nav" id="nav" aria-label="Основная навигация">
@@ -47,16 +48,15 @@
 			<img class="hero__ring" src="assets/img/ring.png" alt="" aria-hidden="true" width="1132" height="1132">
 			<div class="wrap hero__inner">
 				<div class="hero__content">
-					<p class="eyebrow"><span class="eyebrow__line">Иммерсивный</span> <span class="eyebrow__line">документальный
-							спектакль</span></p>
-					<h1 class="hero__title">Люди&nbsp;Бренды</h1>
-					<p class="lead">Иммерсивный документальный спектакль о реальных историях значимых людей наших городов,
-						предпринимателей и руководителей о пути роста и развития.</p>
-					<div class="hero__actions">
+					<p class="eyebrow" data-enter>Благотворительные спектакли</p>
+					<h1 class="hero__title" data-enter>Люди&nbsp;Бренды</h1>
+					<p class="lead" data-enter>Проект, объединяющий предпринимателей, руководителей и лидеров нашего города
+						на театральной сцене ради общей цели — помогать детям и воплощать их заветные мечты в жизнь.</p>
+					<div class="hero__actions" data-enter>
 						<a class="btn btn_primary" href="#spectacles">Наши спектакли</a>
 						<a class="btn btn_ghost" href="partner/">Стать партнёром</a>
 					</div>
-					<ul class="hero__facts">
+					<ul class="hero__facts" data-enter>
 						<li><span class="hero__fact-num">3</span><span class="hero__fact-txt">спектакля<br>в афише</span></li>
 						<li><span class="hero__fact-num">2</span><span class="hero__fact-txt">города:<br>Уфа и Казань</span></li>
 					</ul>
@@ -65,6 +65,117 @@
 				<div class="hero__visual" aria-hidden="true">
 					<img class="hero__portrait" src="assets/img/portrait.png" alt="" width="413" height="618">
 				</div>
+			</div>
+		</section>
+
+		<!-- ============================ МИССИЯ ============================ -->
+		<section class="story" id="mission">
+			<div class="wrap story__inner">
+				<figure class="story__media story__media_round reveal_img" data-parallax>
+					<img src="assets/img/story/mission-hall.jpg" alt="Зрительный зал перед благотворительным спектаклем"
+						width="1024" height="1536" loading="lazy">
+				</figure>
+				<div class="story__body" data-reveal-group>
+					<p class="eyebrow reveal">Программа</p>
+					<h2 class="display reveal">Миссия</h2>
+					<blockquote class="story__quote reveal">Создать культурное событие, объединяющее бизнес, искусство и
+						благотворительность, во имя поддержки талантливых детей из семей с ограниченными возможностями.</blockquote>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================ ЦЕЛЬ ============================ -->
+		<section class="story" id="goal">
+			<div class="wrap story__inner">
+				<figure class="story__media reveal_img" data-parallax>
+					<img src="assets/img/story/goal-piano.jpg" alt="Дети играют на рояле" width="1168" height="1752"
+						loading="lazy">
+				</figure>
+				<div class="story__body" data-reveal-group>
+					<h2 class="display reveal">Цель</h2>
+					<div class="story__quote reveal">Привлечение внимания и ресурсов для помощи одарённым детям из
+						малообеспеченных семей через мощный культурный формат — театральный спектакль.</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================ ПРЕДПРИНИМАТЕЛИ — ДЕТЯМ ============================ -->
+		<section class="values" id="values">
+			<div class="wrap">
+				<p class="eyebrow reveal">Программа</p>
+				<h2 class="display display_xl reveal">Предприниматели — детям</h2>
+				<div class="values__inner">
+					<div class="values__text" data-reveal-group>
+						<p class="values__lead reveal">Мы верим, что:</p>
+						<p class="reveal">Каждый ребёнок достоин возможностей, независимо от финансового положения семьи.
+							Бизнес несёт ответственность за культурное и социальное развитие региона.</p>
+						<p class="reveal">Через искусство можно менять мышление, пробуждать ценности и создавать мосты.</p>
+					</div>
+					<figure class="values__media story__media reveal_img" data-parallax>
+						<img src="assets/img/story/violin-wide.jpg" alt="Девочка со скрипкой" width="1600" height="883"
+							loading="lazy">
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================ КОМУ АДРЕСОВАНА ПОМОЩЬ ============================ -->
+		<section class="help" id="help">
+			<div class="wrap help__inner">
+				<div class="help__body">
+					<h2 class="display reveal">Кому адресована помощь:</h2>
+					<ul class="help__list" data-reveal-group>
+						<li class="reveal">Талантливым детям из малоимущих семей</li>
+						<li class="reveal">Детям, проявляющим способности в музыке и хоккее</li>
+					</ul>
+					<p class="help__label reveal">Поддержка может включать:</p>
+					<ul class="help__pills" data-reveal-group>
+						<li class="reveal">Обучение</li>
+						<li class="reveal">Наставничество</li>
+						<li class="reveal">Участие в конкурсах</li>
+						<li class="reveal">Покупку необходимых ресурсов</li>
+					</ul>
+				</div>
+				<div class="help__media" data-reveal-group>
+					<figure class="help__photo reveal_img">
+						<img src="assets/img/story/violin-portrait.jpg" alt="Юная скрипачка" width="826" height="1239"
+							loading="lazy">
+					</figure>
+					<figure class="help__photo help__photo_offset reveal_img">
+						<img src="assets/img/story/hockey.jpg" alt="Юный хоккеист" width="1060" height="1400" loading="lazy">
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================ ПОЧЕМУ ЭТО УНИКАЛЬНО ============================ -->
+		<section class="why" id="why">
+			<div class="wrap why__inner">
+				<div class="why__body">
+					<h2 class="display reveal">Почему это уникально?</h2>
+					<ol class="why__list" data-reveal-group>
+						<li class="why__item reveal">
+							<span class="why__num">01</span>
+							<p>Люди, формирующие экономику и политику региона, выходят на сцену</p>
+						</li>
+						<li class="why__item reveal">
+							<span class="why__num">02</span>
+							<p>Искусство как инструмент диалога между бизнесом и обществом</p>
+						</li>
+						<li class="why__item reveal">
+							<span class="why__num">03</span>
+							<p>Культурный вклад в ДНК Республики Башкортостан</p>
+						</li>
+						<li class="why__item reveal">
+							<span class="why__num">04</span>
+							<p>Новый уровень социального партнёрства</p>
+						</li>
+					</ol>
+				</div>
+				<figure class="why__media story__media reveal_img" data-parallax>
+					<img src="assets/img/story/why-stage.jpg" alt="Вручение подарка на сцене" width="1600" height="1067"
+						loading="lazy">
+				</figure>
 			</div>
 		</section>
 
@@ -147,7 +258,7 @@
 				<img src="assets/img/portrait.png" alt="" width="413" height="618">
 			</div>
 			<div class="site-footer__brand">
-				<img src="assets/img/logo.svg" alt="Люди Бренды" width="192" height="50">
+				<img src="assets/img/logo-lockup.svg" alt="Люди Бренды — театр добрых дел" width="285" height="126">
 			</div>
 
 			<div class="site-footer__cols">
@@ -169,7 +280,8 @@
 		</div>
 	</footer>
 
-	<script src="assets/js/main.js?v=20261020n" defer></script>
+	<script src="assets/js/reveal.js?v=20261023a" defer></script>
+	<script src="assets/js/main.js?v=20261023a" defer></script>
 </body>
 
 </html>
