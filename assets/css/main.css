@@ -440,14 +440,6 @@ footer[id] {
    border-color: var(--accent);
 }
 
-.card__index {
-   font-size: 42px;
-   font-weight: 300;
-   line-height: 1;
-   text-transform: uppercase;
-   color: var(--accent);
-}
-
 .card__status.card__status_past {
    background: #2b2b2b;
    color: var(--muted-2);
@@ -895,8 +887,8 @@ footer[id] {
 .why__item {
    position: relative;
    display: grid;
-   grid-template-columns: 64px minmax(0, 1fr);
-   gap: 20px;
+   grid-template-columns: 20px minmax(0, 1fr);
+   gap: 18px;
    padding: 24px 0;
 }
 
@@ -922,12 +914,12 @@ footer[id] {
    transform: scaleX(1);
 }
 
-.why__num {
-   font-size: 20px;
-   font-weight: 600;
-   line-height: 1.6;
-   letter-spacing: 0.08em;
-   color: var(--accent);
+.why__dot {
+   width: 10px;
+   height: 10px;
+   margin-top: 0.65em;
+   border-radius: 50%;
+   background: var(--accent);
 }
 
 .why__item p {
@@ -957,7 +949,7 @@ footer[id] {
 
 .why__media figcaption {
    margin-top: 16px;
-   font-size: 13px;
+   font-size: 15.6px;
    font-weight: 600;
    letter-spacing: 0.12em;
    text-transform: uppercase;
@@ -1356,7 +1348,7 @@ html.js-reveal .reveal_img.is-in figcaption {
    }
 
    .why__item {
-      grid-template-columns: 44px minmax(0, 1fr);
+      grid-template-columns: 14px minmax(0, 1fr);
       gap: 12px;
       padding: 20px 0;
    }
@@ -1365,8 +1357,9 @@ html.js-reveal .reveal_img.is-in figcaption {
       font-size: 22px;
    }
 
-   .why__num {
-      font-size: 16px;
+   .why__dot {
+      width: 8px;
+      height: 8px;
    }
 }
 
