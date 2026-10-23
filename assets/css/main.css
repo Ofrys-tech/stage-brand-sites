@@ -654,6 +654,18 @@ footer[id] {
    gap: clamp(32px, 6vw, 88px);
 }
 
+/* Text first in the DOM for mobile reading order; on desktop the photo sits
+   in the left column and the copy in the right one. */
+.story__inner > .story__body {
+   grid-column: 2;
+   grid-row: 1;
+}
+
+.story__inner > .story__media {
+   grid-column: 1;
+   grid-row: 1;
+}
+
 .story__media {
    margin: 0;
    border-radius: 24px;
@@ -1112,8 +1124,16 @@ html.js-reveal .reveal_img.is-in figcaption {
       flex-direction: column;
       align-items: stretch;
       gap: 4px;
-      padding: 24px var(--gutter) 32px;
-      background: var(--bg-header);
+      height: calc(100vh - var(--header-h));
+      height: calc(100dvh - var(--header-h));
+      padding: 24px var(--gutter) 40px;
+      overflow-y: auto;
+      background-color: var(--bg-header);
+      background-image:
+         linear-gradient(to right, rgba(55, 55, 55, 0.35) 1px, transparent 1px),
+         linear-gradient(to bottom, rgba(55, 55, 55, 0.35) 1px, transparent 1px);
+      background-size: calc(100vw / var(--grid-cols)) calc(100vw / var(--grid-cols));
+      background-position: 0 100%;
       border-bottom: 1px solid var(--line-soft);
    }
 
@@ -1230,6 +1250,12 @@ html.js-reveal .reveal_img.is-in figcaption {
       gap: 40px;
    }
 
+   .story__inner > .story__body,
+   .story__inner > .story__media {
+      grid-column: auto;
+      grid-row: auto;
+   }
+
    .story__media,
    .values__media {
       max-width: 520px;
@@ -1293,7 +1319,7 @@ html.js-reveal .reveal_img.is-in figcaption {
    }
 
    .help__photo_offset {
-      margin-top: 28px;
+      margin-top: 0;
    }
 
    .why__item {

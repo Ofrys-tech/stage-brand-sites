@@ -298,8 +298,16 @@
    }
 
    .show-cta__facts {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+   }
+
+   .show-cta__facts span {
+      font-size: 30px;
+   }
+
+   .show-cta__facts small {
+      font-size: 12px;
    }
 
    .show-cta__actions .btn {
