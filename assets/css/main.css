@@ -811,15 +811,35 @@ footer[id] {
 
 .help__photo {
    margin: 0;
-   border-radius: 20px;
-   overflow: hidden;
-   aspect-ratio: 4 / 5;
 }
 
-.help__photo img {
+.help__photo-frame {
+   overflow: hidden;
+   aspect-ratio: 4 / 5;
+   border-radius: 20px;
+   background: var(--bg-card);
+}
+
+.help__photo-frame img {
    width: 100%;
    height: 100%;
    object-fit: cover;
+}
+
+.help__photo figcaption {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   margin-top: 14px;
+   font-size: 13px;
+   font-weight: 600;
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+   color: var(--paper-muted);
+}
+
+.help__photo figcaption span {
+   color: var(--accent);
 }
 
 .help__photo_offset {
@@ -884,7 +904,29 @@ footer[id] {
 .why__media {
    position: sticky;
    top: calc(var(--header-h) + 40px);
+   margin: 0;
+}
+
+.why__media-frame {
+   overflow: hidden;
    aspect-ratio: 3 / 2;
+   border-radius: 24px;
+   background: var(--bg-card);
+}
+
+.why__media-frame img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.why__media figcaption {
+   margin-top: 16px;
+   font-size: 13px;
+   font-weight: 600;
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+   color: var(--muted-3);
 }
 
 /* ============================ placeholder pages ============================ */
@@ -984,6 +1026,18 @@ html.js-reveal .reveal_img img {
 
 html.js-reveal .reveal_img.is-in img {
    clip-path: inset(0);
+}
+
+html.js-reveal .reveal_img figcaption {
+   opacity: 0;
+   transform: translateY(8px);
+   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+   transition-delay: calc(var(--i, 0) * 90ms + 200ms);
+}
+
+html.js-reveal .reveal_img.is-in figcaption {
+   opacity: 1;
+   transform: none;
 }
 
 [data-parallax] {
@@ -1192,7 +1246,6 @@ html.js-reveal .reveal_img.is-in img {
    .why__media {
       position: static;
       max-width: none;
-      aspect-ratio: 3 / 2;
    }
 }
 
@@ -1278,7 +1331,8 @@ html.js-reveal .reveal_img.is-in img {
 
    .reveal,
    .reveal_img,
-   .reveal_img img {
+   .reveal_img img,
+   .reveal_img figcaption {
       opacity: 1;
       transform: none;
       clip-path: none;

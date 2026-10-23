@@ -14,8 +14,8 @@
 	<meta property="og:image" content="../assets/img/story/why-stage.jpg">
 	<link rel="icon" href="../assets/img/accent-circle.svg" type="image/svg+xml">
 	<link rel="preload" href="../assets/fonts/TildaSans-VF.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="stylesheet" href="../assets/css/main.css?v=20261023c">
-	<link rel="stylesheet" href="../assets/css/show.css?v=20261023a">
+	<link rel="stylesheet" href="../assets/css/main.css?v=20261023d">
+	<link rel="stylesheet" href="../assets/css/show.css?v=20261023b">
 	<script>if (!window.matchMedia || !matchMedia('(prefers-reduced-motion: reduce)').matches) {document.documentElement.classList.add('motion');}</script>
 </head>
 
@@ -113,11 +113,18 @@
 				</div>
 				<div class="help__media" data-reveal-group>
 					<figure class="help__photo reveal_img">
-						<img src="../assets/img/story/violin-portrait.jpg" alt="Юная скрипачка" width="826" height="1239"
-							loading="lazy">
+						<div class="help__photo-frame">
+							<img src="../assets/img/story/violin-portrait.jpg" alt="Юная скрипачка" width="826" height="1239"
+								loading="lazy">
+						</div>
+						<figcaption><span>01</span>Музыка</figcaption>
 					</figure>
 					<figure class="help__photo help__photo_offset reveal_img">
-						<img src="../assets/img/story/hockey.jpg" alt="Юный хоккеист" width="1060" height="1400" loading="lazy">
+						<div class="help__photo-frame">
+							<img src="../assets/img/story/hockey.jpg" alt="Юный хоккеист" width="1060" height="1400"
+								loading="lazy">
+						</div>
+						<figcaption><span>02</span>Хоккей</figcaption>
 					</figure>
 				</div>
 			</div>
@@ -147,26 +154,41 @@
 						</li>
 					</ol>
 				</div>
-				<figure class="why__media story__media reveal_img" data-parallax>
-					<img src="../assets/img/story/why-stage.jpg" alt="Вручение подарка на сцене" width="1600" height="1067"
-						loading="lazy">
+				<figure class="why__media reveal_img" data-parallax>
+					<div class="why__media-frame">
+						<img src="../assets/img/story/why-stage.jpg" alt="Вручение подарка на сцене" width="1600" height="1067"
+							loading="lazy">
+					</div>
+					<figcaption>Благотворительная акция проекта</figcaption>
 				</figure>
 			</div>
 		</section>
 
 		<!-- ============================ ПАРТНЁРАМ ============================ -->
-		<section class="partner" id="partner">
-			<div class="wrap partner__inner reveal">
-				<div class="partner__text">
-					<p class="eyebrow">Сотрудничество</p>
-					<h2 class="section__title">Стать партнёром</h2>
-					<p class="lead">Сейчас мы формируем список партнёров и Вы можете стать одним из них. Свяжитесь с нами
-						удобным Вам способом, чтобы узнать детали.</p>
+		<section class="show-cta" id="partner">
+			<div class="wrap show-cta__inner">
+				<div class="show-cta__body">
+					<p class="eyebrow reveal">Сотрудничество</p>
+					<h2 class="display show-cta__title reveal">Стать партнёром</h2>
+					<p class="lead show-cta__lead reveal">Сейчас мы формируем список партнёров и Вы можете стать одним из
+						них. Свяжитесь с нами удобным Вам способом, чтобы узнать детали.</p>
+					<ul class="show-cta__facts" data-reveal-group>
+						<li class="reveal"><span>740</span><small>зрителей<br>в зале</small></li>
+						<li class="reveal"><span>7</span><small>возможностей<br>партнёрства</small></li>
+						<li class="reveal"><span>25.11</span><small>Уфа,<br>«Торатау»</small></li>
+					</ul>
+					<div class="show-cta__actions reveal">
+						<a class="btn btn_primary btn_lg" href="../partner/">Стать партнёром</a>
+						<a class="btn btn_ghost btn_lg" href="https://wa.me/79625465556">Написать в WhatsApp</a>
+					</div>
 				</div>
-				<div class="partner__actions">
-					<a class="btn btn_primary btn_lg" href="../partner/">Стать партнёром</a>
-					<a class="btn btn_ghost btn_lg" href="https://wa.me/79625465556">Написать в WhatsApp</a>
-				</div>
+				<figure class="show-cta__media reveal_img">
+					<div class="show-cta__media-frame">
+						<img src="../assets/img/story/partner-handshake.jpg" alt="Рукопожатие партнёров" width="660"
+							height="1173" loading="lazy">
+					</div>
+					<figcaption>Партнёрство, которое помогает детям</figcaption>
+				</figure>
 			</div>
 		</section>
 	</main>
