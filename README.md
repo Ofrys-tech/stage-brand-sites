@@ -112,7 +112,7 @@ assets/js/reveal.js            scroll reveals, hero entrance support, image para
 assets/fonts/TildaSans-VF.woff2
 assets/img/                    hub brand assets + og.png
 assets/img/logo-lockup.svg     full lockup: wordmark + «Театр добрых дел»
-assets/img/story/              photos, show title and generated hero art for /ufa-nov-2026/
+assets/img/story/              photos, designer PDF slides, show title and hero art for /ufa-nov-2026/
 assets/img/tilda/<hash>/       images of the ported pages (160)
 assets/tilda/                  Tilda runtime used by the ported pages + fonts.css
 tools/port_tilda.py            the port script; tools/_images.txt / _libs.txt are its manifests

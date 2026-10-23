@@ -626,6 +626,29 @@ footer[id] {
    color: var(--muted-3);
 }
 
+/* ============================ designer programme slides ============================ */
+/* Wide screens use the designer's PDF slides as full-bleed images; narrow
+   screens fall back to the readable HTML programme below. */
+
+.programme-pdf {
+   display: block;
+   background: var(--bg-deep);
+}
+
+.pdf-slide {
+   margin: 0;
+}
+
+.pdf-slide img {
+   display: block;
+   width: 100%;
+   height: auto;
+}
+
+.programme-html {
+   display: none;
+}
+
 /* ============================ programme sections ============================ */
 
 .display {
@@ -1240,6 +1263,16 @@ html.js-reveal .reveal_img.is-in figcaption {
    }
 }
 
+
+@media (max-width: 1279px) {
+   .programme-pdf {
+      display: none;
+   }
+
+   .programme-html {
+      display: block;
+   }
+}
 
 @media (max-width: 960px) {
    .story__inner,
