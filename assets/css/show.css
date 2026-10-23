@@ -1,0 +1,144 @@
+/* ==========================================================================
+   /ufa-nov-2026/ — «Счастливый путь» landing hero
+   Everything else is reused from main.css (sections, header, footer, motion).
+   ========================================================================== */
+
+.show-hero {
+   position: relative;
+   overflow: hidden;
+   background: var(--bg-deep);
+   padding: clamp(40px, 6vw, 72px) 0 clamp(56px, 7vw, 88px);
+}
+
+.show-hero::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   z-index: 0;
+   background-image:
+      linear-gradient(to right, rgba(55, 55, 55, 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(55, 55, 55, 0.35) 1px, transparent 1px);
+   background-size: calc(100vw / var(--grid-cols)) calc(100vw / var(--grid-cols));
+   background-position: 0 100%;
+   pointer-events: none;
+}
+
+.show-hero::after {
+   content: "";
+   position: absolute;
+   inset: 0;
+   z-index: 0;
+   background: radial-gradient(55% 55% at 78% 8%, rgba(218, 48, 54, 0.2), transparent 70%);
+   pointer-events: none;
+}
+
+.show-hero>.wrap {
+   position: relative;
+   z-index: 1;
+}
+
+.show-hero__back {
+   margin-bottom: 24px;
+}
+
+.show-hero__title {
+   margin: clamp(24px, 3vw, 40px) 0 0;
+   line-height: 0;
+}
+
+.show-hero__title img {
+   display: block;
+   width: min(1100px, 100%);
+   height: auto;
+}
+
+.show-hero__sub {
+   margin-top: 20px;
+   font-size: clamp(20px, 2vw, 28px);
+   font-weight: 300;
+   color: var(--muted);
+}
+
+.show-hero__line {
+   max-width: 62ch;
+   margin-top: 28px;
+   font-size: clamp(18px, 1.5vw, 21px);
+   font-weight: 300;
+   line-height: 1.45;
+   color: var(--muted-2);
+}
+
+.show-hero__facts {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 12px;
+   margin-top: 32px;
+}
+
+.show-hero__facts li {
+   padding: 14px 22px;
+   border: 1px solid var(--line);
+   border-radius: 50px;
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 1;
+   color: var(--fg);
+}
+
+.show-hero__facts li:first-child {
+   border-color: var(--accent);
+   color: var(--accent-soft);
+}
+
+.show-hero__actions {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 16px;
+   margin-top: 32px;
+}
+
+.show-partners {
+   display: flex;
+   align-items: center;
+   gap: 24px;
+   margin-top: clamp(40px, 6vw, 72px);
+   padding-top: 24px;
+   border-top: 1px solid var(--line-soft);
+}
+
+.show-partners__label {
+   font-size: 16px;
+   font-weight: 600;
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+   color: var(--muted-3);
+}
+
+.show-partners img {
+   width: 157px;
+   height: auto;
+}
+
+@media (max-width: 560px) {
+   .show-hero {
+      padding: 32px 0 56px;
+   }
+
+   .show-hero__back {
+      margin-bottom: 18px;
+   }
+
+   .show-hero__facts {
+      flex-direction: column;
+      align-items: flex-start;
+   }
+
+   .show-hero__actions .btn {
+      width: 100%;
+   }
+
+   .show-partners {
+      flex-wrap: wrap;
+      gap: 16px;
+   }
+}

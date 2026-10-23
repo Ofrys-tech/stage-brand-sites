@@ -19,6 +19,7 @@ Static replacement for the Tilda site `lyudi-brendy.ru`. Fully self-hosted: no r
 | route | content | source |
 |---|---|---|
 | `/` | new hub page (hand-built) | this repo |
+| `/ufa-nov-2026/` | Счастливый путь — Уфа, 25 ноября 2026 | new page (this repo), content from the designer's КП |
 | `/ufa-2026/` | Спектакль в Уфе 2026 | Tilda page `118761336` (was `/`) |
 | `/kazan/` | Спектакль в Казани 2025 | Tilda page `57448733` |
 | `/ufa/` | Спектакль в Уфе 2024 | Tilda page `63388755` |
@@ -29,6 +30,9 @@ Run it:
 ```bash
 python3 -m http.server 8777        # then open http://127.0.0.1:8777/
 ```
+
+**Rollback.** Before the charity content update the tree is tagged `pre-charity-2026-10`;
+`git reset --hard pre-charity-2026-10` restores the site as it was.
 
 No build step, no dependencies. Deploy = serve this directory (the repo root) as the web root.
 All internal links are relative (`kazan/`, `../assets/…`), so the same files work under the GitHub
@@ -98,11 +102,17 @@ of the weight: 7 files are ≥ 1 MB, `Mask_group.png` alone is 2.8 MB).
 
 ```
 index.html                     hub page
+ufa-nov-2026/                  Счастливый путь — new hand-built show page
 ufa-2026/ kazan/ ufa/ partner/ ported spectacle pages (Tilda markup, local assets)
-assets/css/main.css            hub styles + design tokens
-assets/js/main.js              hub interactions (menu, reveal, year)
+assets/css/main.css            hub + show styles, programme sections, design tokens
+assets/css/show.css            /ufa-nov-2026/ hero
+assets/css/partner.css         /partner/ programme blocks added on top of Tilda
+assets/js/main.js              menu + current year
+assets/js/reveal.js            scroll reveals, hero entrance support, image parallax
 assets/fonts/TildaSans-VF.woff2
 assets/img/                    hub brand assets + og.png
+assets/img/logo-lockup.svg     full lockup: wordmark + «Театр добрых дел»
+assets/img/story/              photos and the show title extracted from the designer's КП
 assets/img/tilda/<hash>/       images of the ported pages (160)
 assets/tilda/                  Tilda runtime used by the ported pages + fonts.css
 tools/port_tilda.py            the port script; tools/_images.txt / _libs.txt are its manifests
