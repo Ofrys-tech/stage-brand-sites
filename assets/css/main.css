@@ -476,6 +476,14 @@ footer[id] {
    color: var(--accent);
 }
 
+/* the diagonal status ribbon reaches this far down at four columns; start the
+   title below it instead of letting the corner cut through the first line */
+@media (min-width: 1200px) {
+   .card__title {
+      margin-top: 80px;
+   }
+}
+
 .card__meta {
    display: flex;
    flex-direction: column;
