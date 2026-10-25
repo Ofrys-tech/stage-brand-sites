@@ -11,12 +11,19 @@
 }
 
 .t396 .tn-atom a.lb-link:hover,
-.t396 .tn-atom a.lb-link:focus-visible { text-decoration-color: #da3036 !important; }
+.t396 .tn-atom a.lb-link:focus-visible {
+	text-decoration-color: #da3036 !important;
+}
 
 /* smooth scrolling for the in-page anchors (ПОДРОБНЕЕ, О спектакле, ...) */
-html { scroll-behavior: smooth; }
+html {
+	scroll-behavior: smooth;
+}
+
 @media screen and (prefers-reduced-motion: reduce) {
-	html { scroll-behavior: auto; }
+	html {
+		scroll-behavior: auto;
+	}
 }
 
 /* back-to-hub pill: same look as the «Смотреть фото» button, left of «О спектакле» */
@@ -45,18 +52,27 @@ html { scroll-behavior: smooth; }
 }
 
 .lb-home:hover,
-.lb-home:focus-visible { background: #c92b31; }
+.lb-home:focus-visible {
+	background: #c92b31;
+}
 
-.lb-home__arrow { font-size: 17px; line-height: 1; }
+.lb-home__arrow {
+	font-size: 17px;
+	line-height: 1;
+}
 
 @media screen and (max-width: 1199px) {
-	.lb-home { left: calc(50% - 480px + 137px); }
+	.lb-home {
+		left: calc(50% - 480px + 137px);
+	}
 }
 
 /* the back pill belongs to the desktop nav row; phones get the same link
    at the top of the Tilda mobile menu instead of a button over the content */
 @media screen and (max-width: 959px) {
-	.lb-home { display: none; }
+	.lb-home {
+		display: none;
+	}
 }
 
 .lb-home-mobile {
@@ -74,12 +90,17 @@ html { scroll-behavior: smooth; }
 }
 
 .lb-home-mobile:hover,
-.lb-home-mobile:focus-visible { color: #da3036 !important; background: #222; }
+.lb-home-mobile:focus-visible {
+	color: #da3036 !important;
+	background: #222;
+}
 
 /* Tilda's mobile header ends at 980px, but the Zero Block nav row with the
    back pill takes over at 960px; hide the duplicate bar between the two */
 @media screen and (min-width: 960px) and (max-width: 980px) {
-	.t-screenmax-980px { display: none !important; }
+	.t-screenmax-980px {
+		display: none !important;
+	}
 }
 
 /* phones: the Tilda menu becomes a full-screen sheet and locks the page
@@ -95,14 +116,34 @@ html { scroll-behavior: smooth; }
 		overflow-y: auto;
 		z-index: 989;
 	}
-	body:has(.tmenu-mobile_opened) { overflow: hidden; }
+
+	body:has(.tmenu-mobile_opened) {
+		overflow: hidden;
+	}
 }
 
 /* make room for the pill in the desktop nav row */
 @media screen and (min-width: 960px) {
-	#rec1914306861 .tn-elem[data-elem-id="1730352913707"] { margin-left: 170px; }
-	#rec1914306861 .tn-elem[data-elem-id="1730352981570"] { margin-left: 170px; }
-	#rec1914306861 .tn-elem[data-elem-id="1730352994556"] { margin-left: 170px; }
+	#rec1914306861 .tn-elem[data-elem-id="1730352913707"] {
+		margin-left: 170px;
+	}
+
+	#rec1914306861 .tn-elem[data-elem-id="1730352981570"] {
+		margin-left: 170px;
+	}
+
+	#rec1914306861 .tn-elem[data-elem-id="1730352994556"] {
+		margin-left: 170px;
+	}
+}
+
+/* phones: the hero title is a full-bleed SVG; inset it so the long second
+   line keeps the page's 20px margins instead of touching both screen edges */
+@media screen and (max-width: 639px) {
+	#rec1914306861 .tn-elem[data-elem-id="1730353415868"] {
+		left: 20px !important;
+		width: calc(100% - 40px) !important;
+	}
 }
 
 /* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block are deleted from the markup by tools/port_tilda.py */

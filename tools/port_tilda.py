@@ -609,6 +609,18 @@ def site_css(route, nav, hidden, footer_drop):
             "}",
             "",
         ]
+    if route == "ufa-2026":
+        css += [
+            "/* phones: the hero title is a full-bleed SVG; inset it so the long second",
+            "   line keeps the page's 20px margins instead of touching both screen edges */",
+            "@media screen and (max-width: 639px) {",
+            '\t#rec1914306861 .tn-elem[data-elem-id="1730353415868"] {',
+            "\t\tleft: 20px !important;",
+            "\t\twidth: calc(100% - 40px) !important;",
+            "\t}",
+            "}",
+            "",
+        ]
     css.append("/* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block"
                " are deleted from the markup by tools/port_tilda.py */")
     return "\n".join(css) + "\n"
