@@ -215,6 +215,10 @@ footer[id] {
    gap: 32px;
 }
 
+html.menu-open body {
+   overflow: hidden;
+}
+
 .nav__link {
    font-size: 18px;
    font-weight: 600;
