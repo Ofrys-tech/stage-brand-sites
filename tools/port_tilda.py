@@ -425,6 +425,27 @@ def add_home_button(html):
     return html[: m.end()] + HOME_BUTTON + html[m.end():]
 
 
+MOBILE_HOME = (
+    '<a class="lb-home-mobile" href="../">'
+    '<span aria-hidden="true">←</span> На главную</a>'
+)
+
+MOBILE_MENU_SCRIPT = (
+    '<script src="../assets/js/tilda-mobile-menu.js?v=20261025a" defer></script>\n'
+)
+
+
+def add_mobile_home(html):
+    """The back pill is desktop-only; phones get the same link at the top of the
+    Tilda mobile menu, which is the only navigation surface on narrow screens."""
+    m = re.search(
+        r'<div\b[^>]*class="[^"]*tmenu-mobile__menucontent_hidden[^"]*"[^>]*>', html
+    )
+    if not m:
+        return html
+    return html[: m.end()] + MOBILE_HOME + html[m.end():]
+
+
 SITE_CSS_MARKER = "<!--site-css-->"
 
 
@@ -494,29 +515,49 @@ def site_css(route, nav, hidden, footer_drop):
     if small_left:
         css += ["@media screen and (max-width: 1199px) {", f"\t.lb-home {{ left: {small_left}; }}", "}", ""]
     css += [
-        "/* phones: the nav row has no room — pin the pill to the top-right corner,",
-        "   clear of the wordmark, and shrink it to an arrow on narrow screens */",
+        "/* the back pill belongs to the desktop nav row; phones get the same link",
+        "   at the top of the Tilda mobile menu instead of a button over the content */",
         "@media screen and (max-width: 959px) {",
-        "\t.lb-home {",
-        "\t\tposition: fixed;",
-        "\t\ttop: 10px;",
-        "\t\tleft: auto;",
-        "\t\tright: 12px;",
-        "\t\twidth: auto;",
-        "\t\theight: 40px;",
-        "\t\tpadding: 0 14px;",
-        "\t\tfont-size: 15px;",
-        "\t}",
+        "\t.lb-home { display: none; }",
         "}",
-        "@media screen and (max-width: 560px) {",
-        "\t.lb-home {",
-        "\t\twidth: 40px;",
-        "\t\theight: 40px;",
-        "\t\tpadding: 0;",
-        "\t\tgap: 0;",
+        "",
+        ".lb-home-mobile {",
+        "\tdisplay: block;",
+        "\tpadding: 16px 20px;",
+        "\tbackground: #1a1a1a;",
+        "\tborder-bottom: 1px solid rgba(255, 255, 255, 0.12);",
+        "\tcolor: #fff !important;",
+        "\tfont-family: 'TildaSans', Arial, sans-serif;",
+        "\tfont-size: 17px;",
+        "\tfont-weight: 600;",
+        "\tline-height: 1.4;",
+        "\ttext-decoration: none;",
+        "\ttransition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;",
+        "}",
+        "",
+        ".lb-home-mobile:hover,",
+        ".lb-home-mobile:focus-visible { color: #da3036 !important; background: #222; }",
+        "",
+        "/* Tilda's mobile header ends at 980px, but the Zero Block nav row with the",
+        "   back pill takes over at 960px; hide the duplicate bar between the two */",
+        "@media screen and (min-width: 960px) and (max-width: 980px) {",
+        "\t.t-screenmax-980px { display: none !important; }",
+        "}",
+        "",
+        "/* phones: the Tilda menu becomes a full-screen sheet and locks the page",
+        "   behind it instead of a short dropdown that scrolls away with the header */",
+        "@media screen and (max-width: 980px) {",
+        "\t.tmenu-mobile__menucontent_hidden {",
+        "\t\tposition: fixed !important;",
+        "\t\ttop: 64px !important;",
+        "\t\tright: 0 !important;",
+        "\t\tbottom: 0 !important;",
+        "\t\tleft: 0 !important;",
+        "\t\theight: auto !important;",
+        "\t\toverflow-y: auto;",
+        "\t\tz-index: 989;",
         "\t}",
-        "\t.lb-home__text { display: none; }",
-        "\t.lb-home__arrow { font-size: 18px; }",
+        "\tbody:has(.tmenu-mobile_opened) { overflow: hidden; }",
         "}",
         "",
         "/* make room for the pill in the desktop nav row */",
@@ -582,6 +623,7 @@ def port(html, page, route):
                     nav["elem_" + role] = m.group(1)
                     break
     html = add_home_button(html)
+    html = add_mobile_home(html)
     html = link_site_css(html, route)
 
     # 7. strip the protruding stadium outlines (border only, fill stays)
@@ -641,6 +683,8 @@ def port(html, page, route):
 
     # 9. housekeeping
     html = html.replace('<html lang="en"', '<html lang="ru"')
+    if "</body>" in html:
+        html = html.replace("</body>", MOBILE_MENU_SCRIPT + "</body>", 1)
     return html, images, libs, hidden, nav
 
 
