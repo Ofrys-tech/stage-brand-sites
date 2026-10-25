@@ -325,7 +325,7 @@ html.js-reveal .lb-benefits .reveal_img.is-in img {
    }
 
    .lb-benefits__list li {
-      grid-template-columns: 40px minmax(0, 1fr);
+      grid-template-columns: 24px minmax(0, 1fr);
       gap: 12px;
    }
 
