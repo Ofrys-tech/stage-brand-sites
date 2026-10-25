@@ -447,13 +447,13 @@ footer[id] {
 
 .card__status {
    position: absolute;
-   top: 40px;
-   right: -40px;
-   width: 190px;
-   padding: 9px 0;
+   top: 26px;
+   right: -44px;
+   width: 176px;
+   padding: 8px 0;
    background: var(--accent);
    color: #fff;
-   font-size: 13px;
+   font-size: 12px;
    font-weight: 700;
    letter-spacing: 0.12em;
    line-height: 1;
@@ -469,6 +469,7 @@ footer[id] {
    font-weight: 400;
    line-height: 1.15;
    margin: 22px 0 26px;
+   padding-right: 48px;
 }
 
 .card__title span {
@@ -624,21 +625,51 @@ footer[id] {
 
 .programme-pdf {
    display: block;
-   background: var(--bg-deep);
+   background: linear-gradient(180deg, var(--bg-deep), var(--bg) 10%, var(--bg) 90%, var(--bg-deep));
 }
 
 .pdf-slide {
+   position: relative;
    margin: 0;
 }
 
-.pdf-slide picture {
+.pdf-slide picture,
+.pdf-slide__frame {
+   position: relative;
    display: block;
+   overflow: hidden;
 }
 
 .pdf-slide img {
    display: block;
    width: 100%;
    height: auto;
+}
+
+/* soft fades turn the deck stack into one continuous, breathing flow */
+.pdf-slide picture::before,
+.pdf-slide picture::after,
+.pdf-slide__frame::before,
+.pdf-slide__frame::after {
+   content: "";
+   position: absolute;
+   right: 0;
+   left: 0;
+   z-index: 1;
+   height: clamp(14px, 1.6vw, 26px);
+   pointer-events: none;
+}
+
+.pdf-slide picture::before,
+.pdf-slide__frame::before {
+   top: 0;
+   background: linear-gradient(to bottom, var(--bg-card), transparent);
+}
+
+.pdf-slide picture::after,
+.pdf-slide__frame::after {
+   bottom: 0;
+   background: linear-gradient(to top, var(--bg-card), transparent);
 }
 
 .pdf-slide figcaption {
@@ -648,6 +679,16 @@ footer[id] {
    letter-spacing: 0.12em;
    text-transform: uppercase;
    color: var(--muted-3);
+}
+
+.pdf-slide_why figcaption {
+   position: absolute;
+   top: 78.6%;
+   right: 4%;
+   left: 61%;
+   z-index: 2;
+   margin: 0;
+   padding: 0;
 }
 
 /* ============================ programme sections ============================ */
@@ -680,12 +721,12 @@ footer[id] {
 
 /* Text first in the DOM for mobile reading order; on desktop the photo sits
    in the left column and the copy in the right one. */
-.story__inner > .story__body {
+.story__inner>.story__body {
    grid-column: 2;
    grid-row: 1;
 }
 
-.story__inner > .story__media {
+.story__inner>.story__media {
    grid-column: 1;
    grid-row: 1;
 }
@@ -733,7 +774,7 @@ footer[id] {
    color: var(--muted);
 }
 
-.story__text + .story__text {
+.story__text+.story__text {
    margin-top: 14px;
 }
 
@@ -872,10 +913,6 @@ footer[id] {
    letter-spacing: 0.12em;
    text-transform: uppercase;
    color: var(--paper-muted);
-}
-
-.help__photo figcaption span {
-   color: var(--accent);
 }
 
 .help__photo_offset {
@@ -1180,6 +1217,29 @@ html.js-reveal .reveal_img.is-in figcaption {
    .pdf-slide_why {
       display: block;
    }
+
+   .programme-pdf {
+      padding: clamp(40px, 5vw, 72px) clamp(24px, 4vw, 56px);
+   }
+
+   .pdf-slide {
+      max-width: 1560px;
+      margin: 0 auto clamp(24px, 2.5vw, 40px);
+      padding: clamp(8px, 1vw, 16px);
+      overflow: hidden;
+      border: 1px solid var(--line-soft);
+      border-radius: 24px;
+      background: var(--bg-card);
+   }
+
+   .pdf-slide:last-child {
+      margin-bottom: 0;
+   }
+
+   .pdf-slide picture,
+   .pdf-slide__frame {
+      border-radius: clamp(14px, 1.2vw, 20px);
+   }
 }
 
 @media (max-width: 1279px) {
@@ -1190,6 +1250,7 @@ html.js-reveal .reveal_img.is-in figcaption {
 
    .pdf-slide {
       margin: 0 0 20px;
+      padding: 8px;
       overflow: hidden;
       border: 1px solid var(--line-soft);
       border-radius: 20px;
@@ -1200,14 +1261,19 @@ html.js-reveal .reveal_img.is-in figcaption {
       margin-bottom: 0;
    }
 
+   .pdf-slide picture,
+   .pdf-slide__frame {
+      border-radius: 14px;
+   }
+
    .pdf-slide img {
       width: 100%;
       border-radius: 0;
    }
 
    .pdf-slide figcaption {
-      padding: 14px 16px 18px;
-      background: var(--bg-card);
+      padding: 14px 12px 10px;
+      background: transparent;
    }
 }
 
@@ -1355,6 +1421,7 @@ html.js-reveal .reveal_img.is-in figcaption {
 
 
 @media (max-width: 960px) {
+
    .story__inner,
    .values__inner,
    .help__inner,
@@ -1363,8 +1430,8 @@ html.js-reveal .reveal_img.is-in figcaption {
       gap: 40px;
    }
 
-   .story__inner > .story__body,
-   .story__inner > .story__media {
+   .story__inner>.story__body,
+   .story__inner>.story__media {
       grid-column: auto;
       grid-row: auto;
    }

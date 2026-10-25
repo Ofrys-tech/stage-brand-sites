@@ -119,13 +119,12 @@
    border-radius: 20px;
 }
 
-.lb-audience__num {
+.lb-audience__mark {
    display: block;
-   margin-bottom: 18px;
-   font-size: 34px;
-   font-weight: 300;
-   line-height: 1;
-   color: #da3036;
+   width: 28px;
+   height: 2px;
+   margin-bottom: 22px;
+   background: #da3036;
 }
 
 .lb-audience strong {
@@ -185,8 +184,8 @@
 .lb-benefits__list li {
    position: relative;
    display: grid;
-   grid-template-columns: 56px minmax(0, 1fr);
-   gap: 20px;
+   grid-template-columns: 24px minmax(0, 1fr);
+   gap: 16px;
    padding: 22px 0;
 }
 
@@ -212,12 +211,13 @@
    transform: scaleX(1);
 }
 
-.lb-benefits__num {
-   font-size: 18px;
-   font-weight: 600;
-   line-height: 1.6;
-   letter-spacing: 0.08em;
-   color: #da3036;
+.lb-benefits__mark {
+   display: block;
+   width: 7px;
+   height: 7px;
+   margin-top: 14px;
+   border-radius: 50%;
+   background: #da3036;
 }
 
 .lb-benefits__list p {
@@ -241,7 +241,7 @@
    width: 100%;
    height: 100%;
    object-fit: cover;
-   object-position: 50% 35%;
+   object-position: 50% 58%;
 }
 
 /* ---------- motion ---------- */
