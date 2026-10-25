@@ -434,6 +434,32 @@ MOBILE_MENU_SCRIPT = (
     '<script src="../assets/js/tilda-mobile-menu.js?v=20261025a" defer></script>\n'
 )
 
+# Tilda renders every visible title as an absolutely positioned div, so the ported
+# pages have no heading for assistive tech. Keep one in the document, out of flow.
+PAGE_H1 = {
+    "index.html": "Документальный благотворительный спектакль «Люди Бренды» в Уфе — 2026",
+    "ufa.html": "Документальный благотворительный спектакль «Люди Бренды» в Уфе",
+    "kazan.html": "Документальный благотворительный спектакль «Люди Бренды» в Казани",
+    "partner.html": "Стать партнёром проекта «Люди Бренды»",
+}
+
+SR_ONLY = (
+    "position:absolute;width:1px;height:1px;margin:-1px;padding:0;"
+    "overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);"
+    "white-space:nowrap;border:0"
+)
+
+
+def add_page_heading(html, page):
+    title = PAGE_H1.get(page)
+    if not title:
+        return html
+    m = re.search(r"<body\b[^>]*>", html)
+    if not m:
+        return html
+    h1 = '<h1 style="%s">%s</h1>' % (SR_ONLY, title)
+    return html[: m.end()] + h1 + html[m.end():]
+
 
 def add_mobile_home(html):
     """The back pill is desktop-only; phones get the same link at the top of the
@@ -681,8 +707,9 @@ def port(html, page, route):
     for rec_id in DROP_RECORDS.get(page, []):
         html = remove_record(html, rec_id)
 
-    # 9. housekeeping
-    html = html.replace('<html lang="en"', '<html lang="ru"')
+    # 9. housekeeping: language, accessible heading, menu script
+    html = re.sub(r"<html\b[^>]*>", '<html lang="ru">', html, count=1)
+    html = add_page_heading(html, page)
     if "</body>" in html:
         html = html.replace("</body>", MOBILE_MENU_SCRIPT + "</body>", 1)
     return html, images, libs, hidden, nav
