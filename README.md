@@ -62,6 +62,12 @@ inline, so the port is byte-faithful and only rewrites references:
   page the roundel opened a photo popup instead of scrolling); the bottom plaque is removed entirely
   from the three spectacle pages — the date pill, the time pill, the "Смотреть фото" button and the
   empty card that framed them
+- **mobile navigation**: the back pill is desktop-only. On phones the Tilda burger menu is a
+  full-screen sheet with a "← На главную" row, locks the page behind it, and closes on a link,
+  Escape or a desktop resize (`assets/js/tilda-mobile-menu.js`). The Tilda mobile header and the
+  hero nav row overlap between 960–980px; the duplicate Tilda bar is hidden in that window.
+- **accessibility**: the port adds `<html lang="ru">` and a visually hidden `<h1>` (Tilda renders
+  all visible titles as positioned divs); the mobile menu links close the menu before scrolling.
 - **contacts**: the phone opens `tel:`, the e-mail opens `mailto:`, the venue street opens Yandex Maps in
   a new tab (on `/kazan/` the address in the hero is linked too), and the ИП line is tidied — no dot
   before a comma, no dot after the postcode, while «г.» keeps its dot:
@@ -69,7 +75,7 @@ inline, so the port is byte-faithful and only rewrites references:
 
 ```bash
 python3 tools/port_tilda.py plan     # asset manifests (tools/_images.txt, tools/_libs.txt)
-python3 tools/port_tilda.py build    # rewrite the four pages
+python3 tools/port_tilda.py build    # rewrite the three generated pages (partner is skipped)
 ```
 
 **Fidelity check** (how the port was verified): every `.tn-elem` on each page was measured in
@@ -109,6 +115,7 @@ assets/css/show.css            /ufa-nov-2026/ hero
 assets/css/partner.css         /partner/ programme blocks added on top of Tilda
 assets/js/main.js              menu + current year
 assets/js/reveal.js            scroll reveals, hero entrance support, image parallax
+assets/js/tilda-mobile-menu.js full-screen Tilda menu: home row, close on link/Escape/resize
 assets/fonts/TildaSans-VF.woff2
 assets/img/                    hub brand assets + og.png
 assets/img/logo-lockup.svg     full lockup: wordmark + «Театр добрых дел»
@@ -142,13 +149,12 @@ Contacts (from `lyudi-brendy.ru`): `+7 993 342-12-73`, `Dir-ufa@mail.ru`,
 
 - **Form backend.** The T702 popup form on `/kazan/` and `/partner/` still posts to Tilda's own
   handler (`data-tilda-formskey`, `action=""`). It needs a real backend before the Tilda account is
-  retired.
-- **No `<h1>`.** Tilda renders every heading as an absolutely positioned `div`, so the ported pages
-  ship without an `<h1>`. Worth fixing while adding the remaining defects.
-- **`/13mart`, `/30mart`** ad stubs are not ported; links to them still point at the live domain.
-  They should become real redirects to `/`.
-- **Empty T456 header.** On these pages the Tilda header block is a 0×0 placeholder — every visible
-  nav item lives in the hero Zero Block. That is why the back pill is placed in the hero rather than
-  in the header markup.
+  retired. The phone, e-mail and WhatsApp links work independently.
+- **`/partner/` is hand-maintained.** Its capture predates the programme blocks and the corrected
+  copy, so `port_tilda.py build` deliberately skips it. Edit `partner/index.html` and
+  `assets/css/partner.css` directly and keep the generated `assets/tilda/site-partner.css` in sync.
+- **Empty T456 header.** On desktop the Tilda header block is a 0×0 placeholder — every visible nav
+  item lives in the hero Zero Block, which is why the back pill is there. On phones the Tilda bar is
+  the menu trigger; the home link is the first row of its full-screen sheet.
 - **Images.** 27 MB of originals on `/ufa-2026/`; no WebP/responsive pipeline yet.
 - **TildaSans** is vendored from Tilda's CDN. Confirm the licence before publishing.

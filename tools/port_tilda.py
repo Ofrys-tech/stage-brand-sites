@@ -733,6 +733,12 @@ def main():
     all_hidden = set()
 
     for page, route, source in PAGES:
+        if mode == "build" and route == "partner":
+            # /partner/ is extended by hand (programme sections, partner.css,
+            # corrected copy); its capture is older than the page, so rebuilding
+            # it would drop that work. Regenerate the other three only.
+            print(f"{route:10} hand-maintained page — build skipped")
+            continue
         src = os.path.join(CAPTURES, page)
         html = open(src, encoding="utf-8").read()
         out, images, libs, hidden, nav = port(html, page, route)
