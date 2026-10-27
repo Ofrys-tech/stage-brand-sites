@@ -45,6 +45,29 @@
    display: none;
 }
 
+/* Phones and tablets get the Toratau mark in the empty top-right corner: the
+   wide layout parks the art behind the copy, where it would sit under the
+   two-line title. */
+@media (max-width: 1279px) {
+   .show-hero__art {
+      display: block;
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      z-index: -1;
+      width: clamp(96px, 30vw, 144px);
+      aspect-ratio: 1;
+      background: url("../img/story/hero-toratau.webp") no-repeat right top / contain;
+      opacity: 0.92;
+      pointer-events: none;
+   }
+
+   /* Keep the two-word label on two lines so the corner stays free for the art. */
+   .show-hero .eyebrow {
+      max-width: 300px;
+   }
+}
+
 @media (min-width: 1280px) {
    .show-hero__art {
       display: block;
@@ -107,6 +130,35 @@
 .show-hero__facts li:first-child {
    border-color: var(--accent);
    color: var(--accent-soft);
+}
+
+/* The venue pill is a link: the ::after overlay makes the whole pill the hit
+area, so a thumb can hit the border and not only the words. */
+.show-hero__fact_venue {
+   position: relative;
+   transition: border-color var(--speed) var(--ease), color var(--speed) var(--ease);
+}
+
+.show-hero__fact_venue a {
+   color: inherit;
+}
+
+.show-hero__fact_venue a::after {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: inherit;
+}
+
+.show-hero__fact_venue:hover,
+.show-hero__fact_venue:focus-within {
+   border-color: var(--muted-2);
+   color: var(--fg);
+}
+
+.show-hero__fact_arrow {
+   margin-left: 8px;
+   color: var(--muted-3);
 }
 
 .show-hero__actions {
@@ -312,5 +364,21 @@
 
    .show-cta__actions .btn {
       width: 100%;
+   }
+}
+
+/* 320-360px: the venue pill has to stay one line under the corner art. */
+@media (max-width: 360px) {
+   .show-hero .eyebrow {
+      font-size: 16px;
+   }
+
+   .show-hero__facts li {
+      padding: 12px 16px;
+      font-size: 16px;
+   }
+
+   .show-hero__fact_arrow {
+      margin-left: 6px;
    }
 }
