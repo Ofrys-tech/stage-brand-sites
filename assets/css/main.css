@@ -314,6 +314,11 @@ html.menu-open body {
    margin: 24px 0 28px;
 }
 
+/* Mobile-only forced line break in «Люди Бренды»; hidden on tablet/desktop. */
+.hero__title-break {
+   display: none;
+}
+
 .hero__actions {
    display: flex;
    flex-wrap: wrap;
@@ -1357,8 +1362,52 @@ html.js-reveal .reveal_img.is-in figcaption {
       --grid-cols: 4;
    }
 
+   /* The bust moves from the footer to the top-right of the first screen:
+      it sits beside the two-line wordmark and fades out before the lead.
+      `top` is negative because the art carries ~8% transparent top padding;
+      this puts its visible hairline ~24px under the header. */
    .hero__visual {
-      display: none;
+      display: flex;
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      z-index: 0;
+      pointer-events: none;
+   }
+
+   /* The art's chin sits at 55% and the broken collar at 62%, so the mask
+      dissolves the neck base and shards without cutting the face. */
+   .hero__portrait {
+      width: clamp(128px, 40vw, 152px);
+      -webkit-mask-image: linear-gradient(to bottom, #000 56%, transparent 78%);
+      mask-image: linear-gradient(to bottom, #000 56%, transparent 78%);
+   }
+
+   /* One detached chip floats left of the neck (x 26–29%, y 61–64% of the
+      art) and no vertical fade can drop it without also cutting the chin.
+      Punch it out; browsers without mask compositing keep the plain fade. */
+   @supports (mask-composite: intersect) {
+      .hero__portrait {
+         -webkit-mask-image:
+            linear-gradient(to bottom, #000 56%, transparent 78%),
+            radial-gradient(circle 9px at 27.5% 62.4%, transparent 0 40%, #000 100%);
+         mask-image:
+            linear-gradient(to bottom, #000 56%, transparent 78%),
+            radial-gradient(circle 9px at 27.5% 62.4%, transparent 0 40%, #000 100%);
+         mask-composite: intersect;
+      }
+   }
+
+   .hero .eyebrow {
+      max-width: 196px;
+   }
+
+   .hero__title {
+      margin-top: 16px;
+   }
+
+   .hero__title-break {
+      display: inline;
    }
 
    .hero__inner {
@@ -1389,8 +1438,9 @@ html.js-reveal .reveal_img.is-in figcaption {
       z-index: 1;
    }
 
+   /* Trimmed so «БЛАГОТВОРИТЕЛЬНЫЕ» clears the bust's left edge at 320–390. */
    .hero .eyebrow {
-      font-size: clamp(12px, 4.6vw, 18px);
+      font-size: clamp(12px, 4.2vw, 17px);
       letter-spacing: 0.1em;
    }
 
