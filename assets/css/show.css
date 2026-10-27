@@ -168,26 +168,135 @@ area, so a thumb can hit the border and not only the words. */
    margin-top: 32px;
 }
 
-.show-partners {
+/* ---------- title partner ---------- */
+
+.title-partner {
    display: flex;
-   align-items: center;
-   gap: 24px;
-   margin-top: clamp(40px, 6vw, 72px);
-   padding-top: 24px;
+   align-items: flex-end;
+   justify-content: space-between;
+   gap: clamp(32px, 6vw, 80px);
+   margin-top: clamp(44px, 6vw, 72px);
+   padding-top: clamp(24px, 3vw, 32px);
    border-top: 1px solid var(--line-soft);
 }
 
-.show-partners__label {
-   font-size: 16px;
+.title-partner__main {
+   min-width: 0;
+}
+
+.title-partner__label,
+.partners__label {
+   font-size: 13px;
    font-weight: 600;
-   letter-spacing: 0.12em;
+   letter-spacing: 0.14em;
+   line-height: 1.3;
    text-transform: uppercase;
    color: var(--muted-3);
 }
 
-.show-partners img {
-   width: 157px;
+.title-partner__logo {
+   width: min(420px, 82vw);
    height: auto;
+   margin-top: 18px;
+}
+
+.title-partner__caption {
+   margin-top: 14px;
+   font-size: 16px;
+   font-weight: 300;
+   color: var(--muted-2);
+}
+
+.title-partner__project {
+   flex: none;
+   padding-bottom: 2px;
+}
+
+.title-partner__project img {
+   width: 168px;
+   height: auto;
+   margin-top: 12px;
+}
+
+/* ---------- partner board ---------- */
+
+.partners {
+   padding: clamp(64px, 8vw, 104px) 0 clamp(56px, 7vw, 88px);
+   background: var(--bg);
+   border-top: 1px solid var(--line-soft);
+   text-align: center;
+}
+
+.partners__head {
+   max-width: 760px;
+   margin: 0 auto clamp(28px, 4vw, 44px);
+}
+
+.partners__title {
+   font-size: clamp(36px, 4.4vw, 58px);
+}
+
+.partners__tier {
+   margin-top: clamp(36px, 4vw, 52px);
+}
+
+.partners__tier_plain {
+   margin-top: clamp(24px, 3vw, 32px);
+}
+
+.partners__row {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+   gap: 14px;
+   margin-top: 18px;
+}
+
+.partners__row_lg {
+   gap: 24px;
+}
+
+.partners__row_sm {
+   gap: 12px;
+   max-width: 1060px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.partner-card {
+   display: flex;
+   flex: none;
+   align-items: center;
+   justify-content: center;
+   background: #fff;
+   border-radius: 10px;
+   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+
+.partner-card img {
+   display: block;
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+}
+
+.partner-card_md {
+   width: 380px;
+   height: 210px;
+   padding: 24px 32px;
+}
+
+.partner-card_lg {
+   width: 340px;
+   height: 190px;
+   padding: 22px 30px;
+}
+
+.partner-card_sm {
+   width: 140px;
+   height: 92px;
+   padding: 12px 16px;
 }
 
 
@@ -317,6 +426,29 @@ area, so a thumb can hit the border and not only the words. */
    }
 }
 
+@media (max-width: 1000px) {
+   .partners__row_sm {
+      max-width: 640px;
+   }
+
+   .partner-card_sm {
+      width: calc((100% - 36px) / 4);
+      height: 88px;
+   }
+}
+
+@media (max-width: 760px) {
+   .title-partner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+   }
+
+   .title-partner__project img {
+      width: 140px;
+   }
+}
+
 @media (max-width: 560px) {
    .show-hero {
       padding: 32px 0 56px;
@@ -335,9 +467,28 @@ area, so a thumb can hit the border and not only the words. */
       width: 100%;
    }
 
-   .show-partners {
-      flex-wrap: wrap;
-      gap: 16px;
+   .partner-card_md {
+      width: 100%;
+      max-width: 380px;
+      height: 200px;
+   }
+
+   .partner-card_lg {
+      width: 100%;
+      max-width: 340px;
+      height: 180px;
+   }
+
+   .partner-card_sm {
+      width: calc((100% - 10px) / 2);
+      max-width: 140px;
+      height: 84px;
+      padding: 10px 12px;
+   }
+
+   .partners__row_sm {
+      gap: 10px;
+      max-width: 300px;
    }
 
    .show-cta {

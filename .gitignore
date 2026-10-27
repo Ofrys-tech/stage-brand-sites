@@ -6,3 +6,4 @@ cookies.txt
 .env.*
 node_modules/
 __pycache__/
+materials/

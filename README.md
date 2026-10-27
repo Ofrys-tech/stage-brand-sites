@@ -111,7 +111,7 @@ index.html                     hub page
 ufa-nov-2026/                  Счастливый путь — new hand-built show page
 ufa-2026/ kazan/ ufa/ partner/ ported spectacle pages (Tilda markup, local assets)
 assets/css/main.css            hub + show styles, programme sections, design tokens
-assets/css/show.css            /ufa-nov-2026/ hero
+assets/css/show.css            /ufa-nov-2026/ hero, title partner, partner board
 assets/css/partner.css         /partner/ programme blocks added on top of Tilda
 assets/js/main.js              menu + current year
 assets/js/reveal.js            scroll reveals, hero entrance support, image parallax
@@ -120,6 +120,7 @@ assets/fonts/TildaSans-VF.woff2
 assets/img/                    hub brand assets + og.png
 assets/img/logo-lockup.svg     full lockup: wordmark + «Театр добрых дел»
 assets/img/story/              photos, designer PDF slides + mobile crops, show title and hero art for /ufa-nov-2026/
+assets/img/partners/           partner logos for /ufa-nov-2026/ (trimmed WebP cards + white title mark)
 assets/img/tilda/<hash>/       images of the ported pages (160)
 assets/tilda/                  Tilda runtime used by the ported pages + fonts.css
 tools/port_tilda.py            the port script; tools/_images.txt / _libs.txt are its manifests
@@ -128,6 +129,18 @@ docs/captures/                 verbatim snapshots of the Tilda project (11092055
 docs/preview*.png              README screenshots
 .nojekyll                      keep GitHub Pages from running Jekyll
 ```
+
+### Partner board (`/ufa-nov-2026/`)
+
+The show page uses the client's status order:
+
+- **title partner** in the hero — ГК ТОЧНО, caption «Федеральный застройщик ГК ТОЧНО»;
+- **official partner** — Indjushkin;
+- **partners** — Брауни and Красный Ключ;
+- smaller **partner** row — Hampton, Kumpan, Арго, Глобус, Собака, Арета, Россия 24.
+
+All logos are trimmed WebP cards on white. The general partner goes under the title logo, smaller,
+when its logo arrives. Original vectors/PDFs/JPEGs stay in the gitignored `materials/partners-src/`.
 
 ### Hub design tokens (measured from the live Tilda site)
 

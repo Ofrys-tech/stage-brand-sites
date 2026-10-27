@@ -15,7 +15,7 @@
 	<link rel="icon" href="../assets/img/accent-circle.svg" type="image/svg+xml">
 	<link rel="preload" href="../assets/fonts/TildaSans-VF.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="../assets/css/main.css?v=20261027a">
-	<link rel="stylesheet" href="../assets/css/show.css?v=20261027a">
+	<link rel="stylesheet" href="../assets/css/show.css?v=20261027c">
 	<script>if (!window.matchMedia || !matchMedia('(prefers-reduced-motion: reduce)').matches) {document.documentElement.classList.add('motion');}</script>
 </head>
 
@@ -72,9 +72,17 @@
 					<a class="btn btn_ghost" href="#about">О спектакле</a>
 				</div>
 
-				<div class="show-partners">
-					<span class="show-partners__label">Партнёр проекта</span>
-					<img src="../assets/img/salavat.svg" alt="Салават Юлаев" width="210" height="130" loading="lazy">
+				<div class="title-partner">
+					<div class="title-partner__main reveal">
+						<p class="title-partner__label">Титульный партнёр</p>
+						<img class="title-partner__logo" src="../assets/img/partners/tochno-white.webp" alt="ГК ТОЧНО"
+							width="652" height="126">
+						<p class="title-partner__caption">Федеральный застройщик ГК ТОЧНО</p>
+					</div>
+					<div class="title-partner__project reveal">
+						<p class="title-partner__label">Партнёр проекта</p>
+						<img src="../assets/img/salavat.svg" alt="ХК «Салават Юлаев»" width="210" height="130" loading="lazy">
+					</div>
 				</div>
 			</div>
 		</section>
@@ -165,6 +173,70 @@
 					</div>
 					<figcaption>Благотворительная акция проекта</figcaption>
 				</figure>
+			</div>
+		</section>
+
+		<!-- ============================ ПАРТНЁРЫ ============================ -->
+		<section class="partners" id="partners">
+			<div class="wrap">
+				<div class="partners__head">
+					<h2 class="display partners__title reveal">Наши партнёры</h2>
+				</div>
+
+				<div class="partners__tier">
+					<p class="partners__label reveal">Официальный партнёр</p>
+					<ul class="partners__row" data-reveal-group>
+						<li class="partner-card partner-card_md reveal">
+							<img src="../assets/img/partners/indjushkin.webp" alt="Indjushkin" width="700" height="465"
+								loading="lazy">
+						</li>
+					</ul>
+				</div>
+
+				<div class="partners__tier">
+					<p class="partners__label reveal">Партнёры</p>
+					<ul class="partners__row partners__row_lg" data-reveal-group>
+						<li class="partner-card partner-card_lg reveal">
+							<img src="../assets/img/partners/brauni.webp" alt="Брауни — пекарня-кондитерская" width="600"
+								height="600" loading="lazy">
+						</li>
+						<li class="partner-card partner-card_lg reveal">
+							<img src="../assets/img/partners/krasny-klyuch.webp" alt="Красный Ключ" width="440" height="366"
+								loading="lazy">
+						</li>
+					</ul>
+				</div>
+
+				<div class="partners__tier partners__tier_plain">
+					<ul class="partners__row partners__row_sm" data-reveal-group aria-label="Партнёры">
+						<li class="partner-card partner-card_sm reveal">
+							<img src="../assets/img/partners/hampton.webp" alt="Hampton by Hilton" width="600" height="381"
+								loading="lazy">
+						</li>
+						<li class="partner-card partner-card_sm reveal">
+							<img src="../assets/img/partners/kumpan.webp" alt="Kumpan" width="520" height="533" loading="lazy">
+						</li>
+						<li class="partner-card partner-card_sm reveal">
+							<img src="../assets/img/partners/argo.webp" alt="Арго" width="600" height="288" loading="lazy">
+						</li>
+						<li class="partner-card partner-card_sm reveal">
+							<img src="../assets/img/partners/globus.webp" alt="Гастроном Глобус" width="182" height="64"
+								loading="lazy">
+						</li>
+						<li class="partner-card partner-card_sm reveal">
+							<img src="../assets/img/partners/sobaka.webp" alt="Журнал Собака" width="540" height="321"
+								loading="lazy">
+						</li>
+						<li class="partner-card partner-card_sm reveal">
+							<img src="../assets/img/partners/areta.webp" alt="Арета Дизайн" width="600" height="131"
+								loading="lazy">
+						</li>
+						<li class="partner-card partner-card_sm reveal">
+							<img src="../assets/img/partners/rossiya24.webp" alt="Россия 24 Башкортостан" width="600" height="242"
+								loading="lazy">
+						</li>
+					</ul>
+				</div>
 			</div>
 		</section>
 
