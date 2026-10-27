@@ -171,6 +171,14 @@ First-screen images are preloaded WebP (`portrait`, `ring`, the show title and t
 480 px on phones, 1000 px on desktop). The 740/7 counters start only when their block enters the
 viewport, and the below-fold footer portrait is lazy.
 
+### Colour transitions
+
+Section colour blocks are joined by gradients instead of hard edges: `story` (black → grey),
+`help` (grey → paper), `why` (paper → grey), the show CTA (grey → black) and the footer
+(black → grey) use the section's top padding as the blend length. On the hub the first/last
+programme slides fade into the page, the partner band fades at the top and bottom, and the
+partner/footer/CTA grids are masked at their edges.
+
 ### Hub design tokens (measured from the live Tilda site)
 
 | token | value |

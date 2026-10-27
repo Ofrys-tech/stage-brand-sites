@@ -37,6 +37,21 @@
    z-index: 1;
 }
 
+.story {
+   background-color: var(--bg);
+   background-image: linear-gradient(180deg, var(--bg-deep) 0, var(--bg) clamp(56px, 7vw, 96px));
+}
+
+.help {
+   background-color: var(--paper);
+   background-image: linear-gradient(180deg, var(--bg) 0, var(--paper) clamp(56px, 7vw, 96px));
+}
+
+.why {
+   background-color: var(--bg);
+   background-image: linear-gradient(180deg, var(--paper) 0, var(--bg) clamp(56px, 7vw, 96px));
+}
+
 .show-hero__back {
    margin-bottom: 24px;
 }
@@ -223,7 +238,6 @@ area, so a thumb can hit the border and not only the words. */
 .partners {
    padding: clamp(64px, 8vw, 104px) 0 clamp(56px, 7vw, 88px);
    background: var(--bg);
-   border-top: 1px solid var(--line-soft);
    text-align: center;
 }
 
@@ -306,8 +320,8 @@ area, so a thumb can hit the border and not only the words. */
    position: relative;
    overflow: hidden;
    padding: clamp(72px, 9vw, 128px) 0;
-   background: var(--bg-deep);
-   border-top: 1px solid var(--line-soft);
+   background-color: var(--bg-deep);
+   background-image: linear-gradient(180deg, var(--bg) 0, rgba(32, 32, 32, 0) clamp(72px, 9vw, 128px));
 }
 
 .show-cta::before {
@@ -321,6 +335,8 @@ area, so a thumb can hit the border and not only the words. */
    background-size: calc(100vw / var(--grid-cols)) calc(100vw / var(--grid-cols));
    background-position: 0 100%;
    pointer-events: none;
+   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
+   mask-image: linear-gradient(to bottom, transparent 0, #000 120px, #000 calc(100% - 120px), transparent 100%);
 }
 
 .show-cta::after {
@@ -533,4 +549,10 @@ area, so a thumb can hit the border and not only the words. */
    .show-hero__fact_arrow {
       margin-left: 6px;
    }
+}
+
+
+/* The show's black CTA hands over to the grey footer without a seam. */
+.site-footer_show {
+   background-image: linear-gradient(180deg, var(--bg-deep) 0, rgba(32, 32, 32, 0) clamp(56px, 7vw, 96px));
 }
