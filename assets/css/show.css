@@ -423,6 +423,7 @@ area, so a thumb can hit the border and not only the words. */
 
    .show-cta__media {
       width: min(360px, 70vw);
+      margin: 0 auto;
    }
 }
 
