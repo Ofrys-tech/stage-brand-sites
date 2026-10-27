@@ -14,9 +14,14 @@
 	<meta property="og:image" content="../assets/img/story/why-stage.jpg">
 	<link rel="icon" href="../assets/img/accent-circle.svg" type="image/svg+xml">
 	<link rel="preload" href="../assets/fonts/TildaSans-VF.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="stylesheet" href="../assets/css/main.css?v=20261027e">
-	<link rel="stylesheet" href="../assets/css/show.css?v=20261027d">
-	<link rel="stylesheet" href="../assets/css/motion.css?v=20261027a">
+	<link rel="preload" as="image" href="../assets/img/story/show-title.webp" fetchpriority="high">
+	<link rel="preload" as="image" href="../assets/img/story/hero-toratau-1000.webp" media="(min-width: 1280px)"
+		fetchpriority="low">
+	<link rel="preload" as="image" href="../assets/img/story/hero-toratau-480.webp" media="(max-width: 1279px)"
+		fetchpriority="low">
+	<link rel="stylesheet" href="../assets/css/main.css?v=20261027f">
+	<link rel="stylesheet" href="../assets/css/show.css?v=20261027e">
+	<link rel="stylesheet" href="../assets/css/motion.css?v=20261027b">
 	<script>if (!window.matchMedia || !matchMedia('(prefers-reduced-motion: reduce)').matches) {document.documentElement.classList.add('motion');}</script>
 </head>
 
@@ -52,7 +57,7 @@
 				<a class="btn btn_ghost btn_sm show-hero__back" href="../">← На главную</a>
 				<p class="eyebrow">Благотворительный спектакль</p>
 				<h1 class="show-hero__title">
-					<img src="../assets/img/story/show-title.png" alt="Счастливый путь" width="2400" height="281"
+					<img src="../assets/img/story/show-title.webp" alt="Счастливый путь" width="2000" height="234"
 						fetchpriority="high">
 				</h1>
 				<p class="show-hero__sub">по рассказам Михаила Зощенко</p>
@@ -274,7 +279,7 @@
 	<footer class="site-footer" id="contacts">
 		<div class="wrap site-footer__inner">
 			<div class="site-footer__portrait" aria-hidden="true" data-drift="10">
-				<img src="../assets/img/portrait.png" alt="" width="413" height="618">
+				<img src="../assets/img/portrait.webp" alt="" width="413" height="618" loading="lazy">
 			</div>
 			<div class="site-footer__brand">
 				<img src="../assets/img/logo-lockup.svg" alt="Люди Бренды — театр добрых дел" width="285" height="126">

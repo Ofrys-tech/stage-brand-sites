@@ -57,7 +57,7 @@
       z-index: -1;
       width: clamp(96px, 30vw, 144px);
       aspect-ratio: 1;
-      background: url("../img/story/hero-toratau.webp") no-repeat right top / contain;
+      background: url("../img/story/hero-toratau-480.webp") no-repeat right top / contain;
       opacity: 0.92;
       pointer-events: none;
    }
@@ -77,7 +77,7 @@
       z-index: -1;
       width: 700px;
       aspect-ratio: 1;
-      background: url("../img/story/hero-toratau.webp") no-repeat right top / contain;
+      background: url("../img/story/hero-toratau-1000.webp") no-repeat right top / contain;
       pointer-events: none;
    }
 }

@@ -109,8 +109,8 @@
 
 html.motion .hero__title-line>span {
    transform: translate3d(0, 110%, 0);
-   animation: title-line-in 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-   animation-delay: calc(0.08s + var(--line, 0) * 0.12s);
+   animation: title-line-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+   animation-delay: calc(0.06s + var(--line, 0) * 0.1s);
 }
 
 @keyframes title-line-in {
@@ -127,7 +127,7 @@ html.motion .show-hero__title {
 
 html.motion .show-hero__title img {
    transform: translate3d(0, 106%, 0) scale(1.01);
-   animation: show-title-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+   animation: show-title-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
 }
 
 @keyframes show-title-in {
@@ -144,7 +144,7 @@ html.motion .show-hero__facts,
 html.motion .show-hero__actions {
    opacity: 0;
    transform: translate3d(0, 24px, 0);
-   animation: show-hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+   animation: show-hero-rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 html.motion .show-hero__back {
@@ -152,23 +152,23 @@ html.motion .show-hero__back {
 }
 
 html.motion .show-hero .eyebrow {
-   animation-delay: 0.12s;
+   animation-delay: 0.08s;
 }
 
 html.motion .show-hero__sub {
-   animation-delay: 0.34s;
+   animation-delay: 0.2s;
 }
 
 html.motion .show-hero__line {
-   animation-delay: 0.42s;
+   animation-delay: 0.27s;
 }
 
 html.motion .show-hero__facts {
-   animation-delay: 0.5s;
+   animation-delay: 0.34s;
 }
 
 html.motion .show-hero__actions {
-   animation-delay: 0.58s;
+   animation-delay: 0.41s;
 }
 
 @keyframes show-hero-rise {
@@ -184,7 +184,7 @@ html.motion .show-hero__art {
    opacity: 0;
    transform: scale(1.04);
    animation:
-      art-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards,
+      art-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s forwards,
       art-float 12s 2.2s ease-in-out infinite;
 }
 

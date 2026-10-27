@@ -164,8 +164,12 @@ are only faded out (they do not load `main.css`).
 - the 740/7 show counters and decorative scroll drift (ring, portrait, footer bust).
 
 Entrances are gated by `html.motion`; hover lifts by `prefers-reduced-motion`; without JS or with
-reduced motion everything is static and visible. Remove the `motion.css` / `motion.js` includes to
-roll the layer back without touching layout.
+reduced motion everything is static and visible. The motion layer is a separate commit; revert it
+to remove both the layer and its markup hooks.
+
+First-screen images are preloaded WebP (`portrait`, `ring`, the show title and the Toratau art —
+480 px on phones, 1000 px on desktop). The 740/7 counters start only when their block enters the
+viewport, and the below-fold footer portrait is lazy.
 
 ### Hub design tokens (measured from the live Tilda site)
 
