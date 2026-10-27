@@ -556,17 +556,9 @@ def site_css(route, nav, hidden, footer_drop):
     if small_left:
         css += ["@media screen and (max-width: 1199px) {", f"\t.lb-home {{ left: {small_left}; }}", "}", ""]
     css += [
-        "/* phones get the same back pill in the hero, plus the row in the menu */",
+        "/* phones use the «← На главную» row in the Tilda menu */",
         "@media screen and (max-width: 959px) {",
-        "\t.lb-home {",
-        "\t\tdisplay: inline-flex;",
-        "\t\ttop: 12px;",
-        "\t\tleft: 16px;",
-        "\t\twidth: auto;",
-        "\t\theight: 44px;",
-        "\t\tpadding: 0 18px;",
-        "\t\tfont-size: 15px;",
-        "\t}",
+        "\t.lb-home { display: none; }",
         "}",
         "",
         ".lb-home-mobile {",

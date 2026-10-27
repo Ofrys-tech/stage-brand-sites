@@ -137,3 +137,49 @@ html { scroll-behavior: smooth; }
 }
 
 /* spectacle-to-spectacle buttons, the footer plaque and the kazan ticket block are deleted from the markup by tools/port_tilda.py */
+
+
+/* on phones the hero heading runs to the top edge; keep the back control
+   floating at the bottom-left instead of over the title */
+@media screen and (max-width: 959px) {
+	.lb-home {
+		position: fixed !important;
+		top: auto !important;
+		bottom: 16px !important;
+		left: 16px !important;
+		width: auto;
+		height: 44px;
+		padding: 0 18px;
+		font-size: 15px;
+		z-index: 900;
+	}
+}
+
+
+/* body-level copy of the back pill, injected by tilda-mobile-menu.js */
+.lb-home-floating { display: none; }
+
+@media screen and (max-width: 959px) {
+	.t396__artboard > .lb-home { display: none !important; }
+
+	.lb-home-floating {
+		display: inline-flex !important;
+		position: fixed !important;
+		top: auto !important;
+		bottom: 16px !important;
+		left: 16px !important;
+		width: auto;
+		height: 44px;
+		padding: 0 18px;
+		font-size: 15px;
+		z-index: 900;
+	}
+}
+
+
+/* phones use the «← На главную» row at the top of the Tilda menu; keep the
+   hero clear instead of floating a control over the title */
+@media screen and (max-width: 959px) {
+	.lb-home,
+	.lb-home-floating { display: none !important; }
+}
