@@ -698,14 +698,26 @@ html.menu-open body {
    color: var(--muted-3);
 }
 
+/* The frame wraps the whole slide so the caption is positioned against the
+   art itself; the picture inside already paints the fades. */
+.pdf-slide_why .pdf-slide__frame::before,
+.pdf-slide_why .pdf-slide__frame::after {
+   display: none;
+}
+
+/* The caption hangs under the photo block of the slide: the box matches the
+   photo's edges (64.2% … 95.6% of the art), so centring lands on the photo
+   rather than on the whole slide. nowrap keeps it one centred line. */
 .pdf-slide_why figcaption {
    position: absolute;
    top: 78.6%;
-   right: 4%;
-   left: 61%;
+   right: 4.4%;
+   left: 64.2%;
    z-index: 2;
    margin: 0;
    padding: 0;
+   text-align: center;
+   white-space: nowrap;
 }
 
 /* ============================ programme sections ============================ */
@@ -1176,65 +1188,15 @@ html.js-reveal .reveal_img.is-in figcaption {
    }
 }
 
-.why-mobile {
-   display: none;
-}
-
 @media (max-width: 1279px) {
-   .why-mobile {
-      display: block;
-      margin: 0;
-   }
 
-   .why-mobile__card {
-      padding: 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--line-soft);
-      border-radius: 20px;
-   }
-
-   .why-mobile__heading {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 8px 0 22px;
-   }
-
-   .why-mobile .why__list {
-      margin-top: 0;
-   }
-
-   .why-mobile__photo {
-      margin: 28px 0 0;
-   }
-
-   .why-mobile__photo .why__media-frame {
-      aspect-ratio: 3 / 2;
-   }
-
-   .why-mobile__photo figcaption {
-      margin-top: 14px;
-      font-size: 15.6px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted-3);
-   }
-
-   .pdf-slide_why {
+   /* The phone slide carries its caption inside the art. */
+   .pdf-slide_why figcaption {
       display: none;
    }
 }
 
 @media (min-width: 1280px) {
-   .why-mobile {
-      display: none;
-   }
-
-   .pdf-slide_why {
-      display: block;
-   }
-
    .programme-pdf {
       padding: clamp(40px, 5vw, 72px) clamp(24px, 4vw, 56px);
    }
