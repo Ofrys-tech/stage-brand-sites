@@ -556,3 +556,12 @@ area, so a thumb can hit the border and not only the words. */
 .site-footer_show {
    background-image: linear-gradient(180deg, var(--bg-deep) 0, rgba(32, 32, 32, 0) clamp(56px, 7vw, 96px));
 }
+
+
+/* The compact show menu is exactly the three navigation links and the phone;
+   the «Стать партнёром» pill stays in the desktop header only. */
+@media (max-width: 960px) {
+   .nav .btn {
+      display: none;
+   }
+}

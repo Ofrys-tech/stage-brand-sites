@@ -55,16 +55,17 @@ inline, so the port is byte-faithful and only rewrites references:
   1px border — the faint panel fill stays
 - **navigation** (`assets/tilda/site-<route>.css`, generated per page): spectacle-to-spectacle links
   are gone ("Спектакль в Казани 2025", "Уфа 2024", "Уфа 2026" — 2 header items and 2 hero buttons per
-  page); a red "← На главную" pill sits left of "О спектакле" (the nav buttons are shifted right by
-  170px to make room), styled like the "Смотреть фото" button; the in-page anchors are repaired
+  page); a ghost outline "← На главную" pill sits left of "О спектакле" (the nav buttons are
+  shifted right by 170px to make room), matching the show-page back button and visible on phones
+  too; the in-page anchors are repaired
   ("О спектакле" / "Партнеры" / "Актеры" and the roundel scroll smoothly to the right section —
   Tilda had copied the Kazan record ids into the other pages, so they did nothing, and on the old root
   page the roundel opened a photo popup instead of scrolling); the bottom plaque is removed entirely
   from the three spectacle pages — the date pill, the time pill, the "Смотреть фото" button and the
   empty card that framed them
-- **mobile navigation**: the back pill is desktop-only. On phones the Tilda burger menu is a
-  full-screen sheet with a "← На главную" row, locks the page behind it, and closes on a link,
-  Escape or a desktop resize (`assets/js/tilda-mobile-menu.js`). The Tilda mobile header and the
+- **mobile navigation**: the same ghost back pill also sits in the hero on phones, and the Tilda
+  burger menu is a full-screen sheet with a "← На главную" row; it locks the page behind it and
+  closes on a link, Escape or a desktop resize (`assets/js/tilda-mobile-menu.js`). The Tilda mobile header and the
   hero nav row overlap between 960–980px; the duplicate Tilda bar is hidden in that window.
 - **accessibility**: the port adds `<html lang="ru">` and a visually hidden `<h1>` (Tilda renders
   all visible titles as positioned divs); the mobile menu links close the menu before scrolling.
@@ -114,7 +115,7 @@ assets/css/main.css            hub + show styles, programme sections, design tok
 assets/css/show.css            /ufa-nov-2026/ hero, title partner, partner board
 assets/css/motion.css          premium motion layer (hub, show, partner)
 assets/css/partner.css         /partner/ programme blocks added on top of Tilda
-assets/js/main.js              menu, current year, spectacle-card page fade
+assets/js/main.js              menu, current year, page fade, back-to-top
 assets/js/motion.js            header state, card spotlight, scroll drift, counters
 assets/js/reveal.js            scroll reveals, hero entrance support, image parallax
 assets/js/tilda-mobile-menu.js full-screen Tilda menu: home row, close on link/Escape/resize
@@ -143,6 +144,15 @@ The show page uses the client's status order:
 
 All logos are trimmed WebP cards on white. The general partner goes under the title logo, smaller,
 when its logo arrives. Original vectors/PDFs/JPEGs stay in the gitignored `materials/partners-src/`.
+
+### Navigation and back-to-top
+
+The hub and `/ufa-nov-2026/` mobile menus are solid `#171717` sheets without the old grid: the
+sheet fades/slides in, the links are centred and stagger up, and the phone number is a live `tel:`
+link styled in the accent colour. The hub keeps its items and the «Стать партнёром» pill, with
+«Партнёрам» renamed to «Сотрудничество»; the show menu is exactly «О спектакле», «Партнёрам» and
+the phone (the show CTA stays desktop-only). The hub also gets a round back-to-top button that
+fades in when the requisites reach the viewport and smoothly returns to the top.
 
 ### Page fade
 

@@ -587,6 +587,81 @@ html.menu-open body {
    min-width: 300px;
 }
 
+/* ============================ back to top ============================ */
+
+.to-top {
+   position: fixed;
+   right: clamp(16px, 2.5vw, 32px);
+   bottom: clamp(16px, 2.5vw, 32px);
+   z-index: 95;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 56px;
+   height: 56px;
+   padding: 0;
+   border: 1px solid rgba(255, 255, 255, 0.18);
+   border-radius: 50%;
+   background: rgba(26, 26, 26, 0.86);
+   color: var(--fg);
+   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+   backdrop-filter: blur(12px);
+   cursor: pointer;
+   opacity: 0;
+   visibility: hidden;
+   pointer-events: none;
+   transform: translateY(14px) scale(0.96);
+   transition:
+      opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s 0.35s,
+      background-color var(--speed) var(--ease),
+      border-color var(--speed) var(--ease),
+      color var(--speed) var(--ease),
+      box-shadow var(--speed) var(--ease);
+}
+
+.to-top.is-visible {
+   opacity: 1;
+   visibility: visible;
+   pointer-events: auto;
+   transform: none;
+   transition:
+      opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s 0s,
+      background-color var(--speed) var(--ease),
+      border-color var(--speed) var(--ease),
+      color var(--speed) var(--ease),
+      box-shadow var(--speed) var(--ease);
+}
+
+.to-top:hover {
+   background: var(--accent);
+   border-color: var(--accent);
+   color: #fff;
+   transform: translateY(-2px);
+   box-shadow: 0 16px 36px rgba(218, 48, 54, 0.3);
+}
+
+.to-top:active {
+   transform: scale(0.96);
+}
+
+.to-top svg {
+   width: 20px;
+   height: 20px;
+}
+
+@media (max-width: 560px) {
+   .to-top {
+      right: 16px;
+      bottom: 16px;
+      width: 50px;
+      height: 50px;
+   }
+}
+
 /* ============================ footer ============================ */
 
 .site-footer {
@@ -1362,35 +1437,94 @@ html.js-reveal .reveal_img.is-in figcaption {
    .nav {
       position: fixed;
       inset: var(--header-h) 0 auto 0;
-      display: none;
+      display: flex;
       flex-direction: column;
-      align-items: stretch;
-      gap: 4px;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px;
       height: calc(100vh - var(--header-h));
       height: calc(100dvh - var(--header-h));
-      padding: 24px var(--gutter) 40px;
+      padding: clamp(28px, 8vh, 72px) var(--gutter) 48px;
       overflow-y: auto;
-      background-color: var(--bg-header);
-      background-image:
-         linear-gradient(to right, rgba(55, 55, 55, 0.35) 1px, transparent 1px),
-         linear-gradient(to bottom, rgba(55, 55, 55, 0.35) 1px, transparent 1px);
-      background-size: calc(100vw / var(--grid-cols)) calc(100vw / var(--grid-cols));
-      background-position: 0 100%;
+      overscroll-behavior: contain;
+      background: #171717;
       border-bottom: 1px solid var(--line-soft);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-12px);
+      transition:
+         opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+         transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+         visibility 0s 0.4s;
    }
 
    .nav.is-open {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: none;
+      transition:
+         opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+         transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+         visibility 0s 0s;
    }
 
    .nav__link {
+      width: 100%;
+      padding: 16px 0;
       font-size: 20px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-weight: 500;
+      text-align: center;
+      border: 0;
+      opacity: 0;
+      transform: translateY(14px);
+      transition:
+         opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+         transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+         color var(--speed) var(--ease);
+   }
+
+   .nav__link_tel {
+      color: var(--accent-soft);
    }
 
    .nav .btn {
-      margin-top: 20px;
+      width: min(280px, 100%);
+      margin-top: 28px;
+      opacity: 0;
+      transform: translateY(14px);
+      transition:
+         opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+         transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+         background-color var(--speed) var(--ease),
+         color var(--speed) var(--ease);
+   }
+
+   .nav.is-open .nav__link,
+   .nav.is-open .btn {
+      opacity: 1;
+      transform: none;
+   }
+
+   .nav.is-open .nav__link:nth-child(1) {
+      transition-delay: 0.06s;
+   }
+
+   .nav.is-open .nav__link:nth-child(2) {
+      transition-delay: 0.12s;
+   }
+
+   .nav.is-open .nav__link:nth-child(3) {
+      transition-delay: 0.18s;
+   }
+
+   .nav.is-open .nav__link:nth-child(4) {
+      transition-delay: 0.24s;
+   }
+
+   .nav.is-open .btn {
+      transition-delay: 0.32s;
    }
 
    .cards {

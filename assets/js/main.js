@@ -28,8 +28,26 @@
 		});
 
 		nav.addEventListener("click", function (event) {
-			if (event.target.closest("a") && nav.classList.contains("is-open")) {
-				setMenu(false, false);
+			var link = event.target.closest("a");
+			if (!link || !nav.classList.contains("is-open")) {
+				return;
+			}
+
+			var href = link.getAttribute("href") || "";
+			setMenu(false, false);
+
+			/* Close the sheet first, then scroll with the shared header offset.
+			   Letting the browser follow the hash while the page is still locked
+			   makes long pages land short of the section. */
+			if (href.charAt(0) === "#" && href.length > 1) {
+				var target = document.querySelector(href);
+				if (target) {
+					event.preventDefault();
+					var behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+					window.setTimeout(function () {
+						target.scrollIntoView({ behavior: behavior, block: "start" });
+					}, 50);
+				}
 			}
 		});
 
@@ -108,6 +126,27 @@
 			leaving = false;
 		}
 	});
+
+	/* ---------- back to top on the hub ---------- */
+	var toTop = document.querySelector(".to-top");
+	var requisites = document.querySelector(".contact_wide");
+
+	if (toTop && requisites && "IntersectionObserver" in window) {
+		var topObserver = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				toTop.classList.toggle("is-visible", entry.isIntersecting);
+			});
+		}, { threshold: 0.2 });
+
+		topObserver.observe(requisites);
+
+		toTop.addEventListener("click", function () {
+			window.scrollTo({
+				top: 0,
+				behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+			});
+		});
+	}
 
 	/* ---------- current year ---------- */
 	var year = document.getElementById("year");

@@ -19,7 +19,7 @@ html { scroll-behavior: smooth; }
 	html { scroll-behavior: auto; }
 }
 
-/* back-to-hub pill: same look as the «Смотреть фото» button, left of «О спектакле» */
+/* back-to-hub pill: ghost outline, matching the show-page back button */
 .lb-home {
 	position: absolute;
 	top: 11px;
@@ -31,32 +31,54 @@ html { scroll-behavior: smooth; }
 	align-items: center;
 	justify-content: center;
 	gap: 6px;
-	border: 0;
+	border: 1px solid #da3036;
 	border-radius: 30px;
-	background: #da3036;
-	color: #fff !important;
+	background: transparent;
+	color: #da3036 !important;
 	font-family: 'TildaSans', Arial, sans-serif;
 	font-size: 17px;
 	font-weight: 600;
 	line-height: 1;
 	white-space: nowrap;
 	text-decoration: none;
-	transition: background-color 0.2s ease-in-out;
+	transition:
+		background-color 0.2s ease-in-out,
+		color 0.2s ease-in-out,
+		border-color 0.2s ease-in-out,
+		transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+		box-shadow 0.3s ease-in-out;
 }
 
 .lb-home:hover,
-.lb-home:focus-visible { background: #c92b31; }
+.lb-home:focus-visible {
+	background: #da3036;
+	color: #fff !important;
+	transform: translateY(-2px);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
 
 .lb-home__arrow { font-size: 17px; line-height: 1; }
+
+@media screen and (prefers-reduced-motion: reduce) {
+	.lb-home { transition: none; }
+	.lb-home:hover { transform: none; }
+}
 
 @media screen and (max-width: 1199px) {
 	.lb-home { left: calc(50% - 480px + 137px); }
 }
 
-/* the back pill belongs to the desktop nav row; phones get the same link
-   at the top of the Tilda mobile menu instead of a button over the content */
+/* phones get the same back pill in the hero, plus the row in the menu */
 @media screen and (max-width: 959px) {
-	.lb-home { display: none; }
+	.lb-home {
+		display: inline-flex;
+		top: 12px;
+		left: 16px;
+		width: auto;
+		height: 44px;
+		padding: 0 18px;
+		font-size: 15px;
+	}
 }
 
 .lb-home-mobile {
