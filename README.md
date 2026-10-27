@@ -112,8 +112,10 @@ ufa-nov-2026/                  Счастливый путь — new hand-built 
 ufa-2026/ kazan/ ufa/ partner/ ported spectacle pages (Tilda markup, local assets)
 assets/css/main.css            hub + show styles, programme sections, design tokens
 assets/css/show.css            /ufa-nov-2026/ hero, title partner, partner board
+assets/css/motion.css          premium motion layer (hub, show, partner)
 assets/css/partner.css         /partner/ programme blocks added on top of Tilda
 assets/js/main.js              menu, current year, spectacle-card page fade
+assets/js/motion.js            header state, card spotlight, scroll drift, counters
 assets/js/reveal.js            scroll reveals, hero entrance support, image parallax
 assets/js/tilda-mobile-menu.js full-screen Tilda menu: home row, close on link/Escape/resize
 assets/fonts/TildaSans-VF.woff2
@@ -148,6 +150,22 @@ Clicking a spectacle card — the «Перейти на сайт спектак�
 220 ms and then navigates; the hub and `/ufa-nov-2026/` fade in for 280 ms. `prefers-reduced-motion`
 navigates instantly, and modified clicks / new tabs are left to the browser. The older Tilda pages
 are only faded out (they do not load `main.css`).
+
+### Motion pass
+
+`assets/css/motion.css` (hub, `/ufa-nov-2026/`, `/partner/`) and `assets/js/motion.js`
+(hub + show) add a second, restrained motion layer:
+
+- masked, word-by-word hero title on the hub; masked show-title image and staggered hero copy on
+  `/ufa-nov-2026/`; the Toratau art settling in and floating slowly;
+- a darker scrolled header, growing nav underlines, button lift/glow and a pointer spotlight on the
+  spectacle cards;
+- scale settles for the programme slides, partner-page editorial photos and partner logo cards;
+- the 740/7 show counters and decorative scroll drift (ring, portrait, footer bust).
+
+Entrances are gated by `html.motion`; hover lifts by `prefers-reduced-motion`; without JS or with
+reduced motion everything is static and visible. Remove the `motion.css` / `motion.js` includes to
+roll the layer back without touching layout.
 
 ### Hub design tokens (measured from the live Tilda site)
 

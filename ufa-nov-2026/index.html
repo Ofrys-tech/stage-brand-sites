@@ -16,6 +16,7 @@
 	<link rel="preload" href="../assets/fonts/TildaSans-VF.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="../assets/css/main.css?v=20261027e">
 	<link rel="stylesheet" href="../assets/css/show.css?v=20261027d">
+	<link rel="stylesheet" href="../assets/css/motion.css?v=20261027a">
 	<script>if (!window.matchMedia || !matchMedia('(prefers-reduced-motion: reduce)').matches) {document.documentElement.classList.add('motion');}</script>
 </head>
 
@@ -249,8 +250,8 @@
 					<p class="lead show-cta__lead reveal">Сейчас мы формируем список партнёров и Вы можете стать одним из
 						них. Свяжитесь с нами удобным Вам способом, чтобы узнать детали.</p>
 					<ul class="show-cta__facts" data-reveal-group>
-						<li class="reveal"><span>740</span><small>зрителей<br>в зале</small></li>
-						<li class="reveal"><span>7</span><small>возможностей<br>партнёрства</small></li>
+						<li class="reveal"><span data-count="740">740</span><small>зрителей<br>в зале</small></li>
+						<li class="reveal"><span data-count="7">7</span><small>возможностей<br>партнёрства</small></li>
 						<li class="reveal"><span>25.11</span><small>Уфа,<br>«Торатау»</small></li>
 					</ul>
 					<div class="show-cta__actions reveal">
@@ -272,7 +273,7 @@
 	<!-- ============================ FOOTER ============================ -->
 	<footer class="site-footer" id="contacts">
 		<div class="wrap site-footer__inner">
-			<div class="site-footer__portrait" aria-hidden="true">
+			<div class="site-footer__portrait" aria-hidden="true" data-drift="10">
 				<img src="../assets/img/portrait.png" alt="" width="413" height="618">
 			</div>
 			<div class="site-footer__brand">
@@ -299,6 +300,7 @@
 	</footer>
 
 	<script src="../assets/js/reveal.js?v=20261023a" defer></script>
+	<script src="../assets/js/motion.js?v=20261027a" defer></script>
 	<script src="../assets/js/main.js?v=20261027a" defer></script>
 </body>
 

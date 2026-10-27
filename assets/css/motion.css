@@ -1,0 +1,304 @@
+/* ==========================================================================
+   Motion pass — a restrained second layer on top of main.css / show.css.
+   Loaded on the hub and /ufa-nov-2026/. The entrance masks and float are
+   gated by html.motion (set only when prefers-reduced-motion is not reduce),
+   so a missing script or reduced motion always leaves the content visible.
+   ========================================================================== */
+
+/* ---------- header: a darker, tighter state once the page scrolls ---------- */
+
+.site-header {
+   transition:
+      background-color 0.35s var(--ease),
+      border-color 0.35s var(--ease),
+      box-shadow 0.35s var(--ease);
+}
+
+.site-header.is-scrolled {
+   background: rgba(12, 12, 12, 0.96);
+   border-bottom-color: rgba(218, 48, 54, 0.35);
+   box-shadow: 0 16px 44px rgba(0, 0, 0, 0.32);
+}
+
+.logo img {
+   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+   .site-header.is-scrolled .logo img {
+      transform: scale(0.94);
+   }
+}
+
+/* ---------- navigation: an underline that grows from the left ---------- */
+
+@media (min-width: 961px) {
+   .nav__link {
+      position: relative;
+   }
+
+   .nav__link::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -9px;
+      left: 0;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+   }
+
+   .nav__link:hover::after,
+   .nav__link:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: left;
+   }
+}
+
+/* ---------- buttons: a small lift and a soft accent shadow ---------- */
+
+.btn {
+   transition:
+      background-color var(--speed) var(--ease),
+      color var(--speed) var(--ease),
+      border-color var(--speed) var(--ease),
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s var(--ease);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+   .btn:hover {
+      transform: translateY(-2px);
+   }
+
+   .btn_primary:hover {
+      box-shadow: 0 14px 34px rgba(218, 48, 54, 0.28);
+   }
+
+   .btn_ghost:hover {
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+   .btn:active {
+      transform: translateY(0) scale(0.985);
+   }
+}
+
+/* ---------- hub hero: the title rises out of a mask, word by word ---------- */
+
+.hero__title {
+   white-space: nowrap;
+}
+
+.hero__title-line {
+   display: inline-block;
+   overflow: hidden;
+   vertical-align: top;
+   /* descenders (the tail of «Д») must not be clipped by the mask */
+   padding-bottom: 0.12em;
+   margin-bottom: -0.12em;
+}
+
+.hero__title-line>span {
+   display: inline-block;
+}
+
+html.motion .hero__title-line>span {
+   transform: translate3d(0, 110%, 0);
+   animation: title-line-in 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+   animation-delay: calc(0.08s + var(--line, 0) * 0.12s);
+}
+
+@keyframes title-line-in {
+   to {
+      transform: translate3d(0, 0, 0);
+   }
+}
+
+/* ---------- show hero: masked title image + staggered copy ---------- */
+
+html.motion .show-hero__title {
+   overflow: hidden;
+}
+
+html.motion .show-hero__title img {
+   transform: translate3d(0, 106%, 0) scale(1.01);
+   animation: show-title-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+@keyframes show-title-in {
+   to {
+      transform: translate3d(0, 0, 0) scale(1);
+   }
+}
+
+html.motion .show-hero__back,
+html.motion .show-hero .eyebrow,
+html.motion .show-hero__sub,
+html.motion .show-hero__line,
+html.motion .show-hero__facts,
+html.motion .show-hero__actions {
+   opacity: 0;
+   transform: translate3d(0, 24px, 0);
+   animation: show-hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+html.motion .show-hero__back {
+   animation-delay: 0.04s;
+}
+
+html.motion .show-hero .eyebrow {
+   animation-delay: 0.12s;
+}
+
+html.motion .show-hero__sub {
+   animation-delay: 0.34s;
+}
+
+html.motion .show-hero__line {
+   animation-delay: 0.42s;
+}
+
+html.motion .show-hero__facts {
+   animation-delay: 0.5s;
+}
+
+html.motion .show-hero__actions {
+   animation-delay: 0.58s;
+}
+
+@keyframes show-hero-rise {
+   to {
+      opacity: 1;
+      transform: none;
+   }
+}
+
+/* The Toratau art settles in, then floats very slowly. */
+html.motion .show-hero__art {
+   --art-opacity: 1;
+   opacity: 0;
+   transform: scale(1.04);
+   animation:
+      art-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards,
+      art-float 12s 2.2s ease-in-out infinite;
+}
+
+@media (max-width: 1279px) {
+   html.motion .show-hero__art {
+      --art-opacity: 0.92;
+   }
+}
+
+@keyframes art-in {
+   to {
+      opacity: var(--art-opacity, 1);
+      transform: none;
+   }
+}
+
+@keyframes art-float {
+
+   0%,
+   100% {
+      translate: 0 0;
+   }
+
+   50% {
+      translate: 0 -8px;
+   }
+}
+
+/* ---------- spectacle cards: a pointer-following spotlight ---------- */
+
+.card {
+   isolation: isolate;
+}
+
+.card::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   z-index: -1;
+   border-radius: inherit;
+   background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 20%),
+         rgba(218, 48, 54, 0.16),
+         transparent 65%);
+   opacity: 0;
+   pointer-events: none;
+   transition: opacity 0.35s var(--ease);
+}
+
+@media (hover: hover) {
+
+   .card:hover::before,
+   .card:focus-visible::before {
+      opacity: 1;
+   }
+}
+
+/* ---------- hub programme: each slide settles from a very slight zoom ---------- */
+
+html.js-reveal .pdf-slide.reveal img {
+   transform: scale(1.035);
+   transition: transform 1.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.js-reveal .pdf-slide.reveal.is-in img {
+   transform: none;
+}
+
+/* ---------- partner page: the two editorial images settle in ---------- */
+
+html.js-reveal .lb-about__media img,
+html.js-reveal .lb-benefits__media img {
+   transform: scale(1.035);
+   transition: transform 1.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.js-reveal .lb-about__media.is-in img,
+html.js-reveal .lb-benefits__media.is-in img {
+   transform: none;
+}
+
+/* the back pill gets the same tactile lift as the hub buttons */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+   .lb-home {
+      transition:
+         background-color 0.2s ease-in-out,
+         transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+         box-shadow 0.3s ease-in-out;
+   }
+
+   .lb-home:hover,
+   .lb-home:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+   }
+}
+
+/* ---------- show page: partner cards pop in a touch ---------- */
+
+html.js-reveal .partner-card.reveal {
+   transform: translate3d(0, 22px, 0) scale(0.97);
+}
+
+html.js-reveal .partner-card.reveal.is-in {
+   transform: none;
+}
+
+/* ---------- numbers ---------- */
+
+.show-cta__facts [data-count] {
+   font-variant-numeric: tabular-nums;
+}
+
+/* ---------- scroll drift for decorative images ---------- */
+
+[data-drift] {
+   will-change: transform;
+}

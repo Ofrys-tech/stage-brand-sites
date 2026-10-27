@@ -15,6 +15,7 @@
 	<link rel="icon" href="assets/img/accent-circle.svg" type="image/svg+xml">
 	<link rel="preload" href="assets/fonts/TildaSans-VF.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="assets/css/main.css?v=20261027e">
+	<link rel="stylesheet" href="assets/css/motion.css?v=20261027a">
 	<script>if (!window.matchMedia || !matchMedia('(prefers-reduced-motion: reduce)').matches) {document.documentElement.classList.add('motion');}</script>
 </head>
 
@@ -45,11 +46,13 @@
 	<main>
 		<!-- ============================ HERO ============================ -->
 		<section class="hero">
-			<img class="hero__ring" src="assets/img/ring.png" alt="" aria-hidden="true" width="1132" height="1132">
+			<img class="hero__ring" src="assets/img/ring.png" alt="" aria-hidden="true" width="1132" height="1132"
+				data-drift="24" data-drift-rotate="3">
 			<div class="wrap hero__inner">
 				<div class="hero__content">
 					<p class="eyebrow" data-enter>Благотворительные спектакли</p>
-					<h1 class="hero__title" data-enter>Люди&nbsp;<br class="hero__title-break">Бренды</h1>
+					<h1 class="hero__title"><span class="hero__title-line" style="--line: 0"><span>Люди</span></span>&nbsp;<br
+						class="hero__title-break"><span class="hero__title-line" style="--line: 1"><span>Бренды</span></span></h1>
 					<p class="lead" data-enter>Проект, объединяющий предпринимателей, руководителей и лидеров нашего города
 						на театральной сцене ради общей цели — помогать детям и воплощать их заветные мечты в жизнь.</p>
 					<div class="hero__actions" data-enter>
@@ -62,7 +65,7 @@
 					</ul>
 				</div>
 
-				<div class="hero__visual" aria-hidden="true">
+				<div class="hero__visual" aria-hidden="true" data-drift="12">
 					<img class="hero__portrait" src="assets/img/portrait.png" alt="" width="413" height="618">
 				</div>
 			</div>
@@ -225,6 +228,7 @@
 	</footer>
 
 	<script src="assets/js/reveal.js?v=20261023a" defer></script>
+	<script src="assets/js/motion.js?v=20261027a" defer></script>
 	<script src="assets/js/main.js?v=20261027a" defer></script>
 </body>
 
