@@ -4,6 +4,24 @@
 (function () {
 	"use strict";
 
+	/* The hero back pill sits inside a transformed Tilda artboard; on phones it
+	   cannot float above the scaled hero. Put a body-level copy at the bottom
+	   left and hide it while the menu sheet is open. */
+	var backSource = document.querySelector(".lb-home");
+	var backFloating = null;
+
+	if (backSource && !document.querySelector(".lb-home-floating")) {
+		backFloating = backSource.cloneNode(true);
+		backFloating.classList.add("lb-home-floating");
+		document.body.appendChild(backFloating);
+	}
+
+	function setFloatingVisible(visible) {
+		if (backFloating) {
+			backFloating.style.visibility = visible ? "" : "hidden";
+		}
+	}
+
 	function closeMenu() {
 		var shell = document.querySelector(".tmenu-mobile");
 		var panel = document.querySelector(".tmenu-mobile__menucontent_hidden");
@@ -19,6 +37,8 @@
 			burger.classList.remove("t-menuburger-opened");
 			burger.setAttribute("aria-expanded", "false");
 		}
+
+		setFloatingVisible(true);
 	}
 
 	document.addEventListener("click", function (event) {
@@ -32,6 +52,16 @@
 			closeMenu();
 		}
 	});
+
+	var burgerButton = document.querySelector(".t-menuburger");
+	if (burgerButton) {
+		burgerButton.addEventListener("click", function () {
+			window.setTimeout(function () {
+				var shell = document.querySelector(".tmenu-mobile");
+				setFloatingVisible(!(shell && shell.classList.contains("tmenu-mobile_opened")));
+			}, 0);
+		});
+	}
 
 	var wide = window.matchMedia("(min-width: 981px)");
 

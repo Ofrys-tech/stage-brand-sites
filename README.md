@@ -56,8 +56,9 @@ inline, so the port is byte-faithful and only rewrites references:
 - **navigation** (`assets/tilda/site-<route>.css`, generated per page): spectacle-to-spectacle links
   are gone ("Спектакль в Казани 2025", "Уфа 2024", "Уфа 2026" — 2 header items and 2 hero buttons per
   page); a ghost outline "← На главную" pill sits left of "О спектакле" (the nav buttons are
-  shifted right by 170px to make room), matching the show-page back button; phones keep the
-  «← На главную» row at the top of the Tilda menu; the in-page anchors are repaired
+  shifted right by 170px to make room), matching the show-page back button; phones get a body-level
+  floating copy at the bottom left (hidden while the Tilda menu is open), and the menu keeps its
+  «← На главную» row; the in-page anchors are repaired
   ("О спектакле" / "Партнеры" / "Актеры" and the roundel scroll smoothly to the right section —
   Tilda had copied the Kazan record ids into the other pages, so they did nothing, and on the old root
   page the roundel opened a photo popup instead of scrolling); the bottom plaque is removed entirely
@@ -65,7 +66,8 @@ inline, so the port is byte-faithful and only rewrites references:
   empty card that framed them
 - **mobile navigation**: the Tilda burger menu is a full-screen sheet with a "← На главную"
   row; it locks the page behind it and closes on a link, Escape or a desktop resize
-  (`assets/js/tilda-mobile-menu.js`). The Tilda mobile header and the
+  (`assets/js/tilda-mobile-menu.js`). The same script injects the floating bottom-left back
+  pill on the three spectacle pages and hides it while the sheet is open. The Tilda mobile header and the
   hero nav row overlap between 960–980px; the duplicate Tilda bar is hidden in that window.
 - **accessibility**: the port adds `<html lang="ru">` and a visually hidden `<h1>` (Tilda renders
   all visible titles as positioned divs); the mobile menu links close the menu before scrolling.

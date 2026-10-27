@@ -174,3 +174,37 @@ html { scroll-behavior: smooth; }
 	.lb-home,
 	.lb-home-floating { display: none !important; }
 }
+
+
+/* the injected copy is the visible phone back control (tilda-mobile-menu.js) */
+@media screen and (max-width: 959px) {
+	.t396__artboard > .lb-home { display: none !important; }
+
+	.lb-home-floating {
+		display: inline-flex !important;
+		position: fixed !important;
+		top: auto !important;
+		bottom: 16px !important;
+		left: 16px !important;
+		width: auto;
+		height: 44px;
+		padding: 0 18px;
+		font-size: 15px;
+		z-index: 99999 !important;
+	}
+}
+
+
+@media screen and (max-width: 959px) {
+	.lb-home-floating {
+		background: rgba(20, 20, 20, 0.94) !important;
+		-webkit-backdrop-filter: blur(12px);
+		backdrop-filter: blur(12px);
+		box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+	}
+
+	.lb-home-floating:hover,
+	.lb-home-floating:focus-visible {
+		background: #da3036 !important;
+	}
+}
