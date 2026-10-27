@@ -113,7 +113,7 @@ ufa-2026/ kazan/ ufa/ partner/ ported spectacle pages (Tilda markup, local asset
 assets/css/main.css            hub + show styles, programme sections, design tokens
 assets/css/show.css            /ufa-nov-2026/ hero, title partner, partner board
 assets/css/partner.css         /partner/ programme blocks added on top of Tilda
-assets/js/main.js              menu + current year
+assets/js/main.js              menu, current year, spectacle-card page fade
 assets/js/reveal.js            scroll reveals, hero entrance support, image parallax
 assets/js/tilda-mobile-menu.js full-screen Tilda menu: home row, close on link/Escape/resize
 assets/fonts/TildaSans-VF.woff2
@@ -141,6 +141,13 @@ The show page uses the client's status order:
 
 All logos are trimmed WebP cards on white. The general partner goes under the title logo, smaller,
 when its logo arrives. Original vectors/PDFs/JPEGs stay in the gitignored `materials/partners-src/`.
+
+### Page fade
+
+Clicking a spectacle card — the «Перейти на сайт спектакля» CTA — fades the hub to `#0a0a0a` for
+220 ms and then navigates; the hub and `/ufa-nov-2026/` fade in for 280 ms. `prefers-reduced-motion`
+navigates instantly, and modified clicks / new tabs are left to the browser. The older Tilda pages
+are only faded out (they do not load `main.css`).
 
 ### Hub design tokens (measured from the live Tilda site)
 
