@@ -671,3 +671,8 @@ area, so a thumb can hit the border and not only the words. */
       width: 100%;
    }
 }
+
+/* Portraits that need the crown of the head kept in frame. */
+.cast__card_focus-top .cast__photo img {
+   object-position: 50% 0%;
+}
