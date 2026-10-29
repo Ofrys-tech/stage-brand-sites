@@ -569,3 +569,105 @@ area, so a thumb can hit the border and not only the words. */
       display: none;
    }
 }
+
+/* ---------- actors and creators ---------- */
+
+.cast {
+   padding: clamp(64px, 8vw, 104px) 0 clamp(56px, 7vw, 88px);
+   background: var(--bg);
+}
+
+.cast__head {
+   display: grid;
+   grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.75fr);
+   align-items: end;
+   gap: clamp(28px, 5vw, 72px);
+   padding-bottom: clamp(24px, 3vw, 36px);
+   border-bottom: 1px solid var(--line-soft);
+}
+
+.cast__title {
+   display: block;
+   width: min(760px, 100%);
+   height: auto;
+}
+
+.cast__intro {
+   max-width: 36ch;
+   color: var(--muted-2);
+   font-size: clamp(16px, 1.35vw, 19px);
+   line-height: 1.5;
+}
+
+.cast__grid {
+   display: grid;
+   grid-template-columns: repeat(3, minmax(0, 1fr));
+   gap: clamp(28px, 4vw, 52px) clamp(18px, 2.4vw, 32px);
+   margin-top: clamp(32px, 4vw, 52px);
+   list-style: none;
+}
+
+.cast__photo {
+   overflow: hidden;
+   aspect-ratio: 1;
+   border-radius: 24px;
+   background: var(--bg-card);
+}
+
+.cast__photo img {
+   display: block;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: 50% 30%;
+   transition: transform 0.9s var(--ease);
+}
+
+.cast__card:hover .cast__photo img {
+   transform: scale(1.04);
+}
+
+.cast__name {
+   margin-top: 18px;
+   font-size: clamp(22px, 2vw, 28px);
+   font-weight: 300;
+   line-height: 1.1;
+   letter-spacing: 0.01em;
+   text-transform: uppercase;
+}
+
+.cast__surname {
+   color: var(--accent);
+}
+
+.cast__role {
+   margin-top: 10px;
+   color: var(--muted-2);
+   font-size: clamp(15px, 1.15vw, 17px);
+   line-height: 1.45;
+}
+
+@media (max-width: 960px) {
+   .cast__head {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+   }
+
+   .cast__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+   }
+}
+
+@media (max-width: 560px) {
+   .cast__photo {
+      border-radius: 20px;
+   }
+
+   .cast__grid {
+      grid-template-columns: minmax(0, 1fr);
+   }
+
+   .cast__title {
+      width: 100%;
+   }
+}
