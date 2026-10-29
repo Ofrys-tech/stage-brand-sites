@@ -295,6 +295,10 @@ area, so a thumb can hit the border and not only the words. */
    object-fit: contain;
 }
 
+.partner-card_dark {
+   background: #0b0b0b;
+}
+
 .partner-card_md {
    width: 380px;
    height: 210px;
@@ -302,7 +306,7 @@ area, so a thumb can hit the border and not only the words. */
 }
 
 .partner-card_lg {
-   width: 340px;
+   width: 270px;
    height: 190px;
    padding: 22px 30px;
 }
