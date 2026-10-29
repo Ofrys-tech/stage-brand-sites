@@ -706,3 +706,8 @@ area, so a thumb can hit the border and not only the words. */
 .cast__card_circle .cast__photo img {
    object-position: 50% 39%;
 }
+
+/* Akhmetshina: a touch higher, keeping the top of the hair visible. */
+.cast__card_soft-zoom .cast__photo img {
+   object-position: 50% 2.5%;
+}
