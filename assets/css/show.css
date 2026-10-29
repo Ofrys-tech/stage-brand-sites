@@ -711,3 +711,8 @@ area, so a thumb can hit the border and not only the words. */
 .cast__card_soft-zoom .cast__photo img {
    object-position: 50% 2.5%;
 }
+
+/* Akhmetshina: hair crown right at the top edge, never clipped. */
+.cast__card_soft-zoom .cast__photo img {
+   object-position: 50% 10%;
+}
