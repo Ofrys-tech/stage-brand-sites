@@ -676,3 +676,18 @@ area, so a thumb can hit the border and not only the words. */
 .cast__card_focus-top .cast__photo img {
    object-position: 50% 0%;
 }
+
+/* Shuvalov: pull the full-length shot to the same bust scale as Peshchur. */
+.cast__card_zoom .cast__photo img {
+   transform: scale(1.32);
+   transform-origin: 50% 6%;
+}
+
+.cast__card_zoom:hover .cast__photo img {
+   transform: scale(1.36);
+}
+
+/* Tukhzhilova: centre the round backdrop in the square frame. */
+.cast__card_circle .cast__photo img {
+   object-position: 50% 37%;
+}
